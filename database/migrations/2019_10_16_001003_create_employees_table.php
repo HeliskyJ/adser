@@ -15,10 +15,9 @@ class CreateEmployeesTable extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->bigIncrements('id')->unsigned();
-            $table->string('code',50)->unique();
             $table->string('fullname',60);
-            $table->string('cui',15);
-            $table->string('number_phone',12);
+            $table->string('cui',15)->unique();
+            $table->string('number_phone',12)->nullable();
             $table->string('description',100)->nullable();
             $table->boolean('is_active')->default(1);
             $table->boolean('busy_time')->default(0);
