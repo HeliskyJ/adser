@@ -24,7 +24,7 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        //
+        return view('customer.create');
     }
 
     /**
@@ -33,9 +33,49 @@ class CustomerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
+        $validateCustomer = request()->validate([
+            'fullname' =>
+            [
+                'bail',
+                'required',
+                'string',
+                'min:5',
+                'max:60'
+            ],
+            'cui' =>
+            [
+                'bail',
+                'required',
+                'unique:customers',
+                'digits:13'
+            ],
+            'number_phone' =>
+            [
+                'bail',
+                'nullable',
+                'numeric',
+                'digits_between:8,12'
+            ],
+            'address' =>
+            [
+                'bail',
+                'required',
+                'max:60'
+            ],
+            'description' =>
+            [
+                'bail',
+                'alpha_num',
+                'nullable',
+                'max:100'
+            ]
+        ]);
+
+
+        $customer = Customer::create($validateCustomer);
+        return view('customer.create');
     }
 
     /**

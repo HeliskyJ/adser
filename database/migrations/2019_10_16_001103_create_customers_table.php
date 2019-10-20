@@ -18,6 +18,7 @@ class CreateCustomersTable extends Migration
             $table->string('fullname',60);
             $table->string('cui',15)->unique();
             $table->string('number_phone',12)->nullable();
+            $table->string('address',60);
             $table->string('description',100)->nullable();
             $table->boolean('deleted')->default(0);
             $table->timestamps();
