@@ -34,6 +34,7 @@
       </section>
                   <hr>
         <main class="py-4">
+            @include('layouts.nav')
             @yield('content')
         </main>
     </div>
