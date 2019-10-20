@@ -6,7 +6,6 @@
     <div class="columns">
         <div class="column is-3"></div>
     <div class="column is-half">
-        <div class="col-md-8">
             <div class="box">
                 <div class="title is-2">{{ __('Login') }}</div>
 
@@ -61,7 +60,6 @@
                     </form>
                 </div>
             </div>
-        </div>
     </div>
 </div>
 </div>
