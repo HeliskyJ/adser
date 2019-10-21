@@ -15,7 +15,7 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $customers = Customer::all();
+        $customers = Customer::all()->where('deleted',0);
         return view('customer.index', compact('customers'));
     }
 
@@ -75,9 +75,11 @@ class CustomerController extends Controller
      * @param  \App\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Customer $customer)
+    public function update(StoreCustomer $request, $id)
     {
-        //
+        $validateData = $request->validated();
+       Customer::whereId($id)->update($validateData);
+        return redirect('customers');
     }
 
     /**
@@ -86,8 +88,9 @@ class CustomerController extends Controller
      * @param  \App\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Customer $customer)
+    public function destroy($id)
     {
-        //
+        Customer::whereId($id)->update(array('deleted'=> 1));
+        return redirect('customers');
     }
 }

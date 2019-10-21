@@ -47,10 +47,14 @@
                                                         <i class="fas fa-edit"></i>
                                         </a>
                                     </td>
-                                    <td><a href="#" class="button is-danger ">
+                                    <td><form action="{{ Route('customer.delete', $customer->id) }}" method="POST">
+                                        @csrf
+                                        @method('PATCH')
+                                        <button class="button is-danger ">
                                             <span class="icon is-small">
                                             <i class="fas fa-trash-alt"></i>
-                                        </a>
+                                            </button>
+                                    </form>
                                     </td>
                                 </tr>
                                     @endforeach
