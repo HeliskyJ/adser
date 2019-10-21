@@ -48,9 +48,10 @@ class CustomerController extends Controller
      * @param  \App\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function show(Customer $customer)
+    public function show($cui)
     {
-        //
+        $customer = Customer::where('cui',$cui)->get();
+        return view('customer.show', compact('customer'));
     }
 
     /**

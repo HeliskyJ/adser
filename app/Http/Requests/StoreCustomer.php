@@ -55,7 +55,7 @@ class StoreCustomer extends FormRequest
             'description' =>
             [
                 'bail',
-                'alpha_num',
+                'string',
                 'nullable',
                 'max:100'
             ]
