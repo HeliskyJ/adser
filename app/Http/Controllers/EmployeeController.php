@@ -48,9 +48,10 @@ class EmployeeController extends Controller
      * @param  \App\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function show(Employee $employee)
+    public function show($cui)
     {
-        //
+        $employee = Employee::where('cui', $cui)->get();
+        return view('employee.show', compact('employee'));
     }
 
     /**
