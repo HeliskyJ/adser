@@ -39,7 +39,7 @@ class CustomerController extends Controller
     {
         $validateCustomer = $request->validated();
         $customer = Customer::create($validateCustomer);
-        return view('customer.create');
+        return view('customer.index');
     }
 
     /**

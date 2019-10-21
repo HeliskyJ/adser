@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Employee;
+use App\Http\Requests\StoreEmployee;
 use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
@@ -14,7 +15,8 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        //
+        $employees = Employee::all()->where('deleted', 0);
+        return view('employee.index', compact('employees'));
     }
 
     /**
@@ -24,7 +26,7 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        //
+        return view('employee.create');
     }
 
     /**
@@ -33,9 +35,11 @@ class EmployeeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreEmployee $request)
     {
-        //
+        $validateData = $request->validated();
+        $employee = Employee::create($validateData);
+        return redirect('employees');
     }
 
     /**

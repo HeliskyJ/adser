@@ -11,6 +11,8 @@
 |
 */
 
+use App\Http\Controllers\EmployeeController;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -25,3 +27,7 @@ Route::get('/customer/{cust}', 'CustomerController@show')->name('customer.show')
 Route::get('/customer/{cut}/edit', 'CustomerController@edit')->name('customer.edit');
 Route::patch('/customers/{cust}', 'CustomerController@update')->name('customer.update');
 Route::patch('/customer/delete/{cust}', 'CustomerController@destroy')->name('customer.delete');
+
+Route::get('/employees', 'EmployeeController@index')->name('employee.index');
+Route::get('/employee', 'EmployeeController@create')->name('employee.create');
+Route::post('/employee', 'EmployeeController@store')->name('employee.store');

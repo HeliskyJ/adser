@@ -1,7 +1,7 @@
 <?php
 
 namespace App;
-
+use App\Receipt;
 use Illuminate\Database\Eloquent\Model;
 
 class Employee extends Model
@@ -10,6 +10,6 @@ class Employee extends Model
 
     public function receipts()
     {
-        return $this->hasMany('App\Employee');
+        return $this->hasMany('App\Receipt');
     }
 }
