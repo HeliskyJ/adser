@@ -86,8 +86,9 @@ class EmployeeController extends Controller
      * @param  \App\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Employee $employee)
+    public function destroy( $employee)
     {
-        //
+        $employee = Employee::whereId($employee)->update(array('deleted'=>1));
+        return redirect('employees');
     }
 }

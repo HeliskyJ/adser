@@ -34,3 +34,4 @@ Route::post('/employee', 'EmployeeController@store')->name('employee.store');
 Route::get('/employee/{emp}', 'EmployeeController@show')->name('employee.show');
 Route::get('/employee/{emp}/edit', 'EmployeeController@edit')->name('employee.edit');
 Route::patch('/employees/{emp}', 'EmployeeController@update')->name('employee.update');
+Route::patch('employee/delete/{emp}', 'EmployeeController@destroy')->name('employee.delete');
