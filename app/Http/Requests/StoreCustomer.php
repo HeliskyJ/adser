@@ -36,7 +36,6 @@ class StoreCustomer extends FormRequest
             [
                 'bail',
                 'required',
-                'unique:customers',
                 'digits:13'
             ],
             'number_phone' =>

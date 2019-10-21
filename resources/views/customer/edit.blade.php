@@ -5,7 +5,6 @@
         <div class="container">
                 <div class="box">
                         <div class="form-group">
-                                @csrf
                     <div class="title is-3"> Actualización de información
                         <div class="field is-grouped is-grouped-right">
                         <div class="control">
@@ -13,8 +12,9 @@
                         </div>
                     </div>
                 </div>
-            <form action="{{ route('customer.store') }}" method="POST">
+            <form action="{{ route('customer.update', $customer[0]->id) }}" method="POST">
                         @csrf
+                        @method('PATCH')
                         <div class="field">
                             <label for="fullname" class="label">Nombre</label>
                             <div class="control">
