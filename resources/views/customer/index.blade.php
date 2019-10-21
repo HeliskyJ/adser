@@ -41,7 +41,7 @@
                                 <tr>
                                     <td><a href="{{ Route('customer.show', $customer->cui) }}" class="has-text-link">{{ $customer->cui }}</a></td>
                                     <td>{{ $customer->fullname }}</td>
-                                    <td><a href="#" class="button is-link is-outlined">
+                                    <td><a href="{{ Route('customer.edit', $customer->id) }}" class="button is-link is-outlined">
                                                     {{-- <span>Editar</span> --}}
                                                     <span class="icon is-small">
                                                         <i class="fas fa-edit"></i>

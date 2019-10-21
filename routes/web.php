@@ -22,3 +22,4 @@ Route::get('/customer', 'CustomerController@create')->name('customer.create');
 Route::post('/customer', 'CustomerController@store')->name('customer.store');
 Route::get('/customers', 'CustomerController@index')->name('customer.index');
 Route::get('/customer/{cust}', 'CustomerController@show')->name('customer.show');
+Route::get('/customer/{edit}/edit', 'CustomerController@edit')->name('customer.edit');

@@ -52,6 +52,8 @@ class CustomerController extends Controller
     {
         $customer = Customer::where('cui',$cui)->get();
         return view('customer.show', compact('customer'));
+
+        $countPending = Customer::withCount('receipts.is_active', '0')->get();
     }
 
     /**
@@ -60,9 +62,10 @@ class CustomerController extends Controller
      * @param  \App\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function edit(Customer $customer)
+    public function edit($customer)
     {
-        //
+        $customer = Customer::where('id', $customer)->get();
+        return view('customer.edit', compact('customer'));
     }
 
     /**
