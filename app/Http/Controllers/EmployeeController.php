@@ -73,9 +73,11 @@ class EmployeeController extends Controller
      * @param  \App\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Employee $employee)
+    public function update(StoreEmployee $request, $employee)
     {
-        //
+        $validateData = $request->validated();
+        $employee = Employee::whereId($employee)->update($validateData);
+        return redirect('employees');
     }
 
     /**

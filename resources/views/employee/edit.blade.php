@@ -12,7 +12,7 @@
                         </div>
                     </div>
                 </div>
-            <form action="" method="POST">
+            <form action="{{ route('employee.update', $employee[0]->id) }}" method="POST">
                         @csrf
                         @method('PATCH')
                         <div class="field">
