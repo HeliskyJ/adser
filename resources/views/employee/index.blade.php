@@ -41,8 +41,7 @@
                                 <tr>
                                     <td><a href="{{ route('employee.show', $employee->cui) }}" class="has-text-link">{{ $employee->cui }}</a></td>
                                     <td>{{ $employee->fullname }}</td>
-                                    <td><a href="#" class="button is-link is-outlined">
-                                                    {{-- <span>Editar</span> --}}
+                                    <td><a href="{{ route('employee.edit', $employee->id) }}" class="button is-link is-outlined">
                                                     <span class="icon is-small">
                                                         <i class="fas fa-edit"></i>
                                         </a>

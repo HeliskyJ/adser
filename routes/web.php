@@ -31,4 +31,5 @@ Route::patch('/customer/delete/{cust}', 'CustomerController@destroy')->name('cus
 Route::get('/employees', 'EmployeeController@index')->name('employee.index');
 Route::get('/employee', 'EmployeeController@create')->name('employee.create');
 Route::post('/employee', 'EmployeeController@store')->name('employee.store');
-Route::get('/employee{emp}', 'EmployeeController@show')->name('employee.show');
+Route::get('/employee/{emp}', 'EmployeeController@show')->name('employee.show');
+Route::get('/employee/{emp}/edit', 'EmployeeController@edit')->name('employee.edit');

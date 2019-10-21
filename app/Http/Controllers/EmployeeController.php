@@ -60,9 +60,10 @@ class EmployeeController extends Controller
      * @param  \App\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function edit(Employee $employee)
+    public function edit($employee)
     {
-        //
+        $employee = Employee::where('id', $employee)->get();
+        return view('employee.edit', compact('employee'));
     }
 
     /**
