@@ -37,4 +37,4 @@ Route::patch('/employees/{emp}', 'EmployeeController@update')->name('employee.up
 Route::patch('employee/delete/{emp}', 'EmployeeController@destroy')->name('employee.delete');
 
 Route::get('/service', 'ServiceController@create')->name('service.create');
-Route::post('/service', 'ServiceControlloer@store')->name('service.store');
+Route::post('/service', 'ServiceController@store')->name('service.store');

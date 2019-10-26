@@ -24,6 +24,11 @@ class StoreService extends FormRequest
     public function rules()
     {
         return [
+            'code' =>
+            [
+                'unique:services'
+
+            ],
             'name'=>
             [
                 'bail',
@@ -35,7 +40,7 @@ class StoreService extends FormRequest
             [
                 'bail',
                 'required',
-                'regex:^[0-9]\d{0,6}(\.\d{1,3})*(,\d+)?$'
+                'regex:/^[0-9]\d{0,6}(\.\d{1,3})*(,\d+)?$/'
 
             ],
             'description'=>

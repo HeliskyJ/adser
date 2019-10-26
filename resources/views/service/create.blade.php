@@ -13,6 +13,11 @@
                 </div>
             <form action="{{ route('service.store') }}" method="POST">
                         @csrf
+
+                          <div class="control">
+                              <input type="hidden" name="code" value={{ "serv".date('Y').mt_rand(0,9900) }}>
+                          </div>
+                      
                         <div class="field">
                             <label for="name" class="label">Nombre</label>
                             <div class="control">
