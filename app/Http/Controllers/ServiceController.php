@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Requests\StoreService;
 use App\Service;
 use Illuminate\Http\Request;
 

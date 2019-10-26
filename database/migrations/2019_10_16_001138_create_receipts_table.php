@@ -19,6 +19,7 @@ class CreateReceiptsTable extends Migration
             $table->unsignedBigInteger('employee_id');
             $table->date('date');
             $table->boolean('is_active')->default(1);
+            $table->boolean('done')->default(0);
             $table->timestamps();
 
             $table->foreign('customer_id')->references('id')->on('customers');

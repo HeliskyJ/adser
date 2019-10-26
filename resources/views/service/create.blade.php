@@ -4,8 +4,6 @@
 <div class="column is-half">
         <div class="container">
                 <div class="box">
-                        <div class="form-group">
-                                @csrf
                     <div class="title is-2"> Servicio Nuevo
                         <div class="field is-grouped is-grouped-right">
                         <div class="control">
@@ -16,10 +14,10 @@
             <form action="{{ route('service.store') }}" method="POST">
                         @csrf
                         <div class="field">
-                            <label for="fullname" class="label">Nombre</label>
+                            <label for="name" class="label">Nombre</label>
                             <div class="control">
-                                <input type="text" name="fullname" class="input" placeholder="Limpieza" autofocus required>
-                                @error('fullname')
+                                <input type="text" name="name" class="input" placeholder="Limpieza" autofocus required>
+                                @error('name')
                                 <div class="help is-danger">{{ $message }}</div>
                           @enderror
                             </div>
@@ -28,7 +26,7 @@
                         <div class="field">
                             <label for="price" class="label">Precio</label>
                             <div class="control">
-                                <input type="number" name="price" class="input" placeholder="0.000" required>
+                                <input type="text" name="price" class="input" placeholder="0.000" required>
                                 @error('price')
                                 <div class="help is-danger">{{ $message }}</div>
                           @enderror
@@ -37,7 +35,7 @@
 
                         <div class="field">
                             <label for="description" class="label">Descripción</label>
-                            <textarea name="description" id="" cols="30" rows="10" class="textarea"></textarea>
+                            <textarea name="description" cols="30" rows="10" class="textarea"></textarea>
                             @error('description')
                             <div class="help is-danger">{{ $message }}</div>
                       @enderror
@@ -52,10 +50,8 @@
                                 </div>
                               </div>
                     </form>
-            
-                </div>
             </div>
 </div>
 </div>
-
+</div>
 @endsection
