@@ -14,7 +14,7 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $services = Service::where('deleted', 0)->get();
+        $services = Service::all()->where('deleted', 0);
         return view('service.index', compact('services'));
     }
 
@@ -38,7 +38,7 @@ class ServiceController extends Controller
     {
         $validateData = $request->validated();
         $service = Service::create($validateData);
-        return view('service.index');
+        return redirect('services');
     }
 
     /**
@@ -72,9 +72,11 @@ class ServiceController extends Controller
      * @param  \App\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Service $service)
+    public function update(StoreService $request, $service)
     {
-        //
+        $validateData = $request->validated();
+        Service::whereId($service)->update($validateData);
+        return redirect('services');
     }
 
     /**
@@ -83,8 +85,9 @@ class ServiceController extends Controller
      * @param  \App\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Service $service)
+    public function destroy($service)
     {
-        //
+        Service::whereId($service)->update(array('deleted'=>1));
+        return redirect('services');
     }
 }

@@ -12,7 +12,7 @@
                         </div>
                     </div>
                 </div>
-            <form action="#" method="POST">
+            <form action="{{ Route('service.update', $service[0]->id) }}" method="POST">
                         @csrf
                         @method('PATCH')
 
@@ -25,18 +25,18 @@
                         <div class="field">
                             <label for="name" class="label">Nombre</label>
                             <div class="control">
-                                <input type="text" name="fullname" class="input" value="{{ $service[0]->name }}" required>
-                                @error('fullname')
+                                <input type="text" name="name" class="input" value="{{ $service[0]->name }}" required>
+                                @error('name')
                                 <div class="help is-danger">{{ $message }}</div>
                           @enderror
                             </div>
                         </div>
 
                         <div class="field">
-                            <label for="cui" class="label">Precio</label>
+                            <label for="price" class="label">Precio</label>
                             <div class="control">
-                                <input type="number" name="price" class="input" value="{{ $service[0]->price }}" autocomplete="off" required>
-                                @error('cui')
+                                <input type="text" name="price" class="input" value="{{ $service[0]->price }}" autocomplete="off" required>
+                                @error('price')
                                 <div class="help is-danger">{{ $message }}</div>
                           @enderror
                             </div>

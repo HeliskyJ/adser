@@ -49,7 +49,7 @@
                                                         <i class="fas fa-edit"></i>
                                         </a>
                                     </td>
-                                    <td><form action="" method="POST">
+                                    <td><form action="{{ Route('service.delete', $service->id) }}" method="POST">
                                         @csrf
                                         @method('PATCH')
                                         <button class="button is-danger ">
