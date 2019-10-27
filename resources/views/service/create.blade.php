@@ -15,7 +15,7 @@
                         @csrf
 
                           <div class="control">
-                              <input type="hidden" name="code" value={{ "serv".date('Y').mt_rand(0,9900) }}>
+                              <input type="hidden" name="code" value={{ "SERV".date('Y').mt_rand(0,9900) }}>
                           </div>
                       
                         <div class="field">

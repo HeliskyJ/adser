@@ -14,7 +14,8 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        //
+        $services = Service::where('deleted', 0)->get();
+        return view('service.index', compact('services'));
     }
 
     /**
@@ -37,7 +38,7 @@ class ServiceController extends Controller
     {
         $validateData = $request->validated();
         $service = Service::create($validateData);
-        return view('service.create');
+        return view('service.index');
     }
 
     /**
@@ -48,7 +49,7 @@ class ServiceController extends Controller
      */
     public function show($service)
     {
-        $service = Service::whereId($service)->get();
+        $service = Service::where('code',$service)->get();
         return view('service.show', compact('service'));
     }
 

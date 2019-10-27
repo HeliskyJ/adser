@@ -38,11 +38,12 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                    @foreach ($customers as $customer)
+                                    @foreach ($services as $service)
                                 <tr>
-                                    <td><a href="" class="has-text-link">{{ $customer->cui }}</a></td>
-                                    <td>{{ $customer->fullname }}</td>
-                                    <td><a href="" class="button is-link is-outlined">
+                                    <td><a href="{{ Route('service.show', $service->code) }}" class="has-text-link">{{ $service->code }}</a></td>
+                                    <td>{{ $service->name }}</td>
+                                    <td>{{ $service->price }}</td>
+                                    <td><a href="#" class="button is-link is-outlined">
                                                     {{-- <span>Editar</span> --}}
                                                     <span class="icon is-small">
                                                         <i class="fas fa-edit"></i>

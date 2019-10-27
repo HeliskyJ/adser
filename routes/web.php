@@ -12,6 +12,7 @@
 */
 
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\ServiceController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -36,6 +37,7 @@ Route::get('/employee/{emp}/edit', 'EmployeeController@edit')->name('employee.ed
 Route::patch('/employees/{emp}', 'EmployeeController@update')->name('employee.update');
 Route::patch('employee/delete/{emp}', 'EmployeeController@destroy')->name('employee.delete');
 
+Route::get('/services', 'ServiceController@index')->name('service.index');
 Route::get('/service', 'ServiceController@create')->name('service.create');
 Route::post('/service', 'ServiceController@store')->name('service.store');
 Route::get('/service/{serv}', 'ServiceController@show')->name('service.show');

@@ -20,6 +20,7 @@ class CreateServicesTable extends Migration
             $table->decimal('price',10,3)->unsigned();
             $table->string('description',100)->nullable();
             $table->boolean('is_active')->default(1);
+            $table->boolean('deleted')->default(0);
             $table->timestamps();
         });
     }
