@@ -41,3 +41,4 @@ Route::get('/services', 'ServiceController@index')->name('service.index');
 Route::get('/service', 'ServiceController@create')->name('service.create');
 Route::post('/service', 'ServiceController@store')->name('service.store');
 Route::get('/service/{serv}', 'ServiceController@show')->name('service.show');
+Route::get('/service/{serv}/edit', 'ServiceController@edit')->name('service.edit');

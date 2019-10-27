@@ -43,7 +43,7 @@
                                     <td><a href="{{ Route('service.show', $service->code) }}" class="has-text-link">{{ $service->code }}</a></td>
                                     <td>{{ $service->name }}</td>
                                     <td>{{ $service->price }}</td>
-                                    <td><a href="#" class="button is-link is-outlined">
+                                    <td><a href="{{ route('service.edit', $service->id) }}" class="button is-link is-outlined">
                                                     {{-- <span>Editar</span> --}}
                                                     <span class="icon is-small">
                                                         <i class="fas fa-edit"></i>
