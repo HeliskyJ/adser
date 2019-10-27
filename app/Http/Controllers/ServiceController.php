@@ -46,9 +46,10 @@ class ServiceController extends Controller
      * @param  \App\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function show(Service $service)
+    public function show($service)
     {
-        //
+        $service = Service::whereId($service)->get();
+        return view('service.show', compact('service'));
     }
 
     /**

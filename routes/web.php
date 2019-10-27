@@ -38,3 +38,4 @@ Route::patch('employee/delete/{emp}', 'EmployeeController@destroy')->name('emplo
 
 Route::get('/service', 'ServiceController@create')->name('service.create');
 Route::post('/service', 'ServiceController@store')->name('service.store');
+Route::get('/service/{serv}', 'ServiceController@show')->name('service.show');
