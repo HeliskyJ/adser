@@ -5,8 +5,11 @@
 @import 'variables';
 
 // Bulma
-@import '~bulma/bulma.sass';
+@import '~bulmaswatch/minty/bulmaswatch.scss';
 
 // font awesome
 @import '~@fortawesome/fontawesome-free/css/all.css';
 
+
+//easy_autocomplete
+@import '~easy-autocomplete/dist/easy-autocomplete.min.css';

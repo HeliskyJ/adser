@@ -46,3 +46,4 @@ Route::patch('/service/{serv}', 'ServiceController@update')->name('service.updat
 Route::patch('/service/delete/{serv}', 'ServiceController@destroy')->name('service.delete');
 
 Route::get('/receipt', 'ReceiptController@create')->name('receipt.create');
+Route::get('/receipt/findCustomer', 'ReceiptController@findCustomer');

@@ -13,22 +13,22 @@
                 </div>
                 <div class="box" style="background-color:#f0f2ef;">
                     <div class="columns">
-                        <div class="column is-half">
-                            <div class="contro">
-                                <input type="text" class="input" placeholder="Cliente">
+                        <div class="column">
+                            <div class="control">
+                                    <input type="text" id='fullname' name="fullname" class="input">
                             </div>
                         </div>
                         <div class="column">
                             <div class="control">
-                                <input type="text" class="input" placeholder="Télefono">
-                            </div>
+                                <input type="text" name="phone_number" id="phone_number" class="input" placeholder="Télefono">
+                        </div>
                         </div>
                         <div class="column">
                             <div class="control">
-                                <input type="text" class="input" placeholder="Dirección">
+                                <input type="text" name="address" id="address" class="input" placeholder="Dirección">
                             </div>
                         </div>
-                    </div>
+                </div>
                 </div>
                 <div class="container">
                     <div class="columns">
@@ -61,7 +61,6 @@
                         </div>
                         </div>
                     </div>
-                </div>
                 <hr>
                 <table class="table is-fullwidth ">
                     <thead>
@@ -83,6 +82,27 @@
         </div>
 </div>
 </div>
+<script>   
+
+$(document).ready(function(){
+
+var options = {
+	url: function(q) {
+		return baseUrl('receipt/findCustomer?q=' +q);
+	}, 
+    getValue: "fullname",
+    list: {
+        onClickEvent: function(){
+            var e = $("$fullname").getSelectedItemData();
+            $(".phone_number").val = e.number_phone;
+            $(".address").val = e.address;
+            
+        }
+    }
+};
+$("#fullname").easyAutocomplete(options);
+});
+        </script>
 @endsection
 
 

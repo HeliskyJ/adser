@@ -1,7 +1,6 @@
 <?php
 
 namespace App;
-use App\Receipt;
 use Illuminate\Database\Eloquent\Model;
 
 class Customer extends Model
@@ -11,5 +10,9 @@ class Customer extends Model
     public function receipts()
     {
         return $this->hasMany('App\Receipt');
+     }
+
+     public function findByName($q){
+         return $this->where('fullname', 'like', '%' . $q . '%')->get();
      }
 }

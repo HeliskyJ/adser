@@ -2,11 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Receipt;
-use Illuminate\Http\Request;
+use App\Receipt,
+    App\Customer,
+    Illuminate\Http\Request,
+    App\Http\Requests;
 
 class ReceiptController extends Controller
 {
+    private $customer = null;
+
+    public function __CONSTRUCT(){
+        $this->customer = new Customer();
+    }
+
+    public function findCustomer(Request $req){
+       return $this->customer
+                   ->findByName($req->input('q'));
+    }
     /**
      * Display a listing of the resource.
      *
