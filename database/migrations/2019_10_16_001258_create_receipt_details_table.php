@@ -17,12 +17,10 @@ class CreateReceiptDetailsTable extends Migration
             $table->bigIncrements('id')->unsigned();
             $table->unsignedBigInteger('receipts_id');
             $table->unsignedBigInteger('services_id');
-            $table->tinyInteger('flat')->unsigned();
+            $table->tinyInteger('duration')->unsigned();
             $table->decimal('price',10,3)->unsigned();
             $table->decimal('total',10,4)->unsigned();
             $table->string('address',60);
-            $table->date('date_service');
-            $table->time('service_time');
             $table->string('description', 60)->nullable();
             $table->timestamps();
 
