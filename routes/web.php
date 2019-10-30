@@ -12,6 +12,7 @@
 */
 
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\ReceiptController;
 use App\Http\Controllers\ServiceController;
 
 Route::get('/', function () {
@@ -47,3 +48,5 @@ Route::patch('/service/delete/{serv}', 'ServiceController@destroy')->name('servi
 
 Route::get('/receipt', 'ReceiptController@create')->name('receipt.create');
 Route::get('/receipt/findCustomer', 'ReceiptController@findCustomer');
+Route::get('/receipt/findService', 'ReceiptController@findService');
+Route::get('/receipt/findEmployee', 'ReceiptController@findEmployee');

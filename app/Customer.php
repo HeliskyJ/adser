@@ -12,7 +12,7 @@ class Customer extends Model
         return $this->hasMany('App\Receipt');
      }
 
-     public function findByName($q){
+     public function findByFullname($q){
          return $this->where('fullname', 'like', '%' . $q . '%')->get();
      }
 }

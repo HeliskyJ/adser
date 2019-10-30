@@ -11,4 +11,8 @@ class Service extends Model
     public function details(){
         return $this->hasMany('App\ReceiptDetail');
     }
+
+    public function findByName($q){
+        return $this->where('name', 'like', '%' . $q . '%')->get();
+    }
 }

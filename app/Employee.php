@@ -12,4 +12,8 @@ class Employee extends Model
     {
         return $this->hasMany('App\Receipt');
     }
+
+    public function findByFull($q){
+        return $this->where('fullname', 'like', '%' . $q . '%')->get();
+    }
 }

@@ -2,22 +2,37 @@
 
 namespace App\Http\Controllers;
 
+use App\Employee;
 use App\Receipt,
     App\Customer,
-    Illuminate\Http\Request,
-    App\Http\Requests;
+    App\Service,
+    Illuminate\Http\Request;
 
 class ReceiptController extends Controller
 {
     private $customer = null;
+    private $service = null;
+    private $employee = null;
 
     public function __CONSTRUCT(){
         $this->customer = new Customer();
+        $this->service = new Service();
+        $this->employee = new Employee();
     }
 
     public function findCustomer(Request $req){
        return $this->customer
-                   ->findByName($req->input('q'));
+                   ->findByFullname($req->input('q'));
+    }
+
+    public function findService(Request $req){
+        return $this->service
+                    ->findByName($req->input('q')); 
+    }
+
+    public function findEmployee(Request $req){
+        return $this->employee
+                    ->findByFull($req->input('q'));
     }
     /**
      * Display a listing of the resource.
