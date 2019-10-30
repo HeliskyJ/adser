@@ -25,7 +25,7 @@
 <section class="hero is-primary is-size-8">
         <div class="hero-body">
           <div class="container">
-              <img src="{{ asset('/images/clean.png') }}" alt="ADSER Servicio de Limpieza">
+              <img src="{{ asset('/images/clean.png') }}" alt="ADSER Servicio de Limpieza" style="width:8em" >
             <h1 class="title">
               ADSER
             </h1>
