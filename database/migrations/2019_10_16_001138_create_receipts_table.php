@@ -17,6 +17,7 @@ class CreateReceiptsTable extends Migration
             $table->bigIncrements('id')->unsigned();
             $table->unsignedBigInteger('customer_id');
             $table->unsignedBigInteger('employee_id');
+            $table->unsignedBigInteger('schedule_id');
             $table->date('date_service');
             $table->time('service_time');
             $table->time('service_end');
@@ -24,6 +25,7 @@ class CreateReceiptsTable extends Migration
             $table->boolean('done')->default(0);
             $table->timestamps();
 
+            $table->foreign('schedule_id')->references('id')->on('schedules');
             $table->foreign('customer_id')->references('id')->on('customers');
             $table->foreign('employee_id')->references('id')->on('employees');
         });
