@@ -15,8 +15,8 @@ class CreateReceiptDetailsTable extends Migration
     {
         Schema::create('receipt_details', function (Blueprint $table) {
             $table->bigIncrements('id')->unsigned();
-            $table->unsignedBigInteger('receipts_id');
-            $table->unsignedBigInteger('services_id');
+            $table->unsignedBigInteger('receipt_id');
+            $table->unsignedBigInteger('service_id');
             $table->tinyInteger('duration')->unsigned();
             $table->decimal('price',10,3)->unsigned();
             $table->decimal('total',10,4)->unsigned();
@@ -24,8 +24,8 @@ class CreateReceiptDetailsTable extends Migration
             $table->string('description', 60)->nullable();
             $table->timestamps();
 
-            $table->foreign('receipts_id')->references('id')->on('receipts');
-            $table->foreign('services_id')->references('id')->on('services');
+            $table->foreign('receipt_id')->references('id')->on('receipts');
+            $table->foreign('service_id')->references('id')->on('services');
         });
     }
 
