@@ -17,13 +17,13 @@
                     <div class="columns">
                         <div class="column">
                             <div class="control">
-                                <input type="hidden" id="idcustom" name="customer">
+                                <input type="hidden" id="idcustom" name="customer_id">
                                 <input type="text" id='fullname' class="input" placeholder="Cliente">
                             </div>
                         </div>
                         <div class="column">
                             <div class="control">
-                                <input type="tel" name="number_phone" id="number_phone" class="input" placeholder="Télefono">
+                                <input type="tel" id="number_phone" class="input" placeholder="Télefono">
                         </div>
                         </div>
                         <div class="column">
@@ -38,11 +38,13 @@
                         <div class="column is-4">
                             <div class="control">
                                 <input type="date" name="date_service" class="input" placeholder="Fecha del servicio" id="dat" min="{{ $day= date('Y-m-d') }}" value="{{ $now=date('Y-m-d') }}">
+                                <input type="time" name="service_end" value="10:30">
                             </div>
                         </div>
                         <div class="column is-4">
                             <div class="control">
-                                    <select class="input" name="hour" id="">
+                                    <select class="input" name="schedule_id">
+                                        <option value="0">----------</option>
                                 @foreach ($sc as $sch)
                              <option value="{{ $sch->id }}">{{ $sch->hour }}</option>
                                 @endforeach
@@ -51,7 +53,7 @@
                             </div>
                         <div class="column is-4">
                             <div class="control">
-                                <input type="hidden" name="employee" id="empId">
+                                <input type="hidden" name="employee_id" id="empId">
                                 <input type="text" class="input" id="full" placeholder="Empleado">
                             </div>
                         </div>
@@ -204,7 +206,7 @@ $('#time').keyup(function(){
                         var total = parseFloat($('#price').val()) * parseFloat($('#time').val());
 
                         $('<tr><td><a class="button is-danger" id="btnrmv"><i class="fa fa-trash"></i></a></td>'+
-                                '<td> <input  type="hidden" name="services[]" class="input" value="'+ (idSer)+'" readonly></td>'+
+                                '<input  type="hidden" name="service_id[]" class="input" value="'+ (idSer)+'" readonly>'+
                                 '<td> <input id="serv" type="text" class="input" value="'+ (service)+'" readonly></td>'+
                                 '<td> <input id="tim" type="text"  name="durations[]" class="input" value="' + (time)+'" readonly></td>'+
                                 '<td> <input id="pri" type="text"  name="prices[]" class="input" value="' + (price)+'" readonly></td>'+

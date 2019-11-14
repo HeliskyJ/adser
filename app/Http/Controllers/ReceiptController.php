@@ -6,6 +6,8 @@ use App\Employee;
 use App\Receipt,
     App\Customer,
     App\Service,
+    App\ReceiptDetail,
+    App\Schedule,
     Illuminate\Http\Request;
 
 class ReceiptController extends Controller
@@ -34,6 +36,7 @@ class ReceiptController extends Controller
         return $this->employee
                     ->findByFull($req->input('q'));
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -51,7 +54,10 @@ class ReceiptController extends Controller
      */
     public function create()
     {
-        return view('receipt.create');
+            $sc = Schedule::all()->where('is_active', 1);
+            return view('receipt.create', compact('sc'));
+    
+        return view('receipt.create', compact('sc'));
     }
 
     /**
@@ -62,7 +68,24 @@ class ReceiptController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $headerReceipt = $request->all();
+        $lastid = Receipt::create($headerReceipt);
+        $idd =$lastid->id;
+        if(count($request->service_id)>0){
+            foreach($request->service_id as $item=>$v){
+                $receiptDetail = array(
+                'receipt_id' => $idd,
+                'service_id' => $request->service_id[$item],
+                'address'    => $request->address[$item],
+                'duration'   => $request->durations[$item],
+                'price'      => $request->prices[$item],
+                'total'      => $request->subtol[$item]
+                );
+                ReceiptDetail::insert($receiptDetail);
+            }
+        } 
+        return redirect('receipt.create');
     }
 
     /**

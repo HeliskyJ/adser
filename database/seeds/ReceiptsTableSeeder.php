@@ -32,7 +32,7 @@ class ReceiptsTableSeeder extends Seeder
                 'customer_id' => '3',
                 'employee_id' => '3',
                 'schedule_id' => '5',
-                'date_service' => '2019-12-01',
+                'date_service' => '2019-11-01',
                 'service_end' => '12:00', 
             ],
         ];
