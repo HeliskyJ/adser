@@ -17,7 +17,8 @@
                     <div class="columns">
                         <div class="column">
                             <div class="control">
-                                    <input type="text" id='fullname' name="fullname" class="input" placeholder="Cliente">
+                                <input type="hidden" id="idcustom" name="customer">
+                                <input type="text" id='fullname' class="input" placeholder="Cliente">
                             </div>
                         </div>
                         <div class="column">
@@ -36,40 +37,22 @@
                     <div class="columns">
                         <div class="column is-4">
                             <div class="control">
-                                <input type="date" name="date_service" class="input" placeholder="Fecha del servicio" id="dat" min="{{ $day= date('Y-m-d') }}">
+                                <input type="date" name="date_service" class="input" placeholder="Fecha del servicio" id="dat" min="{{ $day= date('Y-m-d') }}" value="{{ $now=date('Y-m-d') }}">
                             </div>
                         </div>
                         <div class="column is-4">
                             <div class="control">
-                                    <input list="Horas" name="hour" class="input">
-
-                                    <datalist id="Horas">
-                                      <option value="8:00">
-                                      <option value="8:30">
-                                      <option value="9:00">
-                                      <option value="9:30">
-                                      <option value="10:00">
-                                      <option value="10:30">
-                                      <option value="11:00">
-                                      <option value="11:30">
-                                      <option value="12:00">
-                                      <option value="12:30">
-                                      <option value="13:00">
-                                      <option value="14:00">  
-                                      <option value="15:00">
-                                      <option value="15:30">
-                                      <option value="16:00">
-                                      <option value="16:30">
-                                      <option value="17:00">
-                                      <option value="17:30">
-                                      <option value="18:00">
-                                      <option value="18:30">    
-                                    </datalist>
+                                    <select class="input" name="hour" id="">
+                                @foreach ($sc as $sch)
+                             <option value="{{ $sch->id }}">{{ $sch->hour }}</option>
+                                @endforeach
+                            </select>     
                             </div>
                             </div>
                         <div class="column is-4">
                             <div class="control">
-                                <input type="text" name="employee" class="input" id="full" placeholder="Empleado">
+                                <input type="hidden" name="employee" id="empId">
+                                <input type="text" class="input" id="full" placeholder="Empleado">
                             </div>
                         </div>
                     </div>
@@ -78,6 +61,7 @@
                     <div class="columns">
                         <div class="column is-7">
                             <div class="control">
+                                <input type="hidden" id="idService">
                                 <input type="text"  class="input" id="name" placeholder="Servicio">
                             </div>
                         </div>
@@ -124,7 +108,9 @@
                                     <td id="total">Q.00</td>
                                 </tr>
                     </tfoot>
-                </table>
+                </table><br>
+                <textarea class="textarea" name="desc" rows="2" placeholder="Descripción"></textarea>
+                <hr>
                 <button class="button is-fullwidth is-info is-outlined">Guardar</button>
             </form>
                 </div>
@@ -145,8 +131,12 @@ var options = {
     onSelectItemEvent: function() {
     var value = $("#fullname").getSelectedItemData().number_phone;
     var val = $("#fullname").getSelectedItemData().address;
+    var idcustomer = $("#fullname").getSelectedItemData().id;
+
     $("#number_phone").val(value).trigger("change");
     $("#address").val(val).trigger("change");
+    $("#idcustom").val(idcustomer).trigger("change");
+
 }
 }
 };
@@ -168,6 +158,8 @@ var options = {
     onSelectItemEvent: function() {
     var value = $("#name").getSelectedItemData().price;
     $("#price").val(value).trigger("change");
+    var value = $("#name").getSelectedItemData().id;
+    $("#idService").val(value).trigger("change");
 }
 }
 };
@@ -190,6 +182,12 @@ $('#time').keyup(function(){
                 return baseUrl('receipt/findEmployee?q=' +q);
             }, 
             getValue: "fullname",
+            list:{
+                onSelectItemEvent: function(){
+                    var idemp= $("#full").getSelectedItemData().id;
+                     $("#empId").val(idemp).trigger("change");
+                }
+            }
         };
         $("#full").easyAutocomplete(options);
         });
@@ -198,6 +196,7 @@ $('#time').keyup(function(){
                 $(document).ready(function(){
 
                     $.fn.myFunctionSet = function(){
+                        var idSer = $('#idService').val();
                         var service = $('#name').val();
                         var time = $('#time').val();
                         var price = $('#price').val();
@@ -205,7 +204,8 @@ $('#time').keyup(function(){
                         var total = parseFloat($('#price').val()) * parseFloat($('#time').val());
 
                         $('<tr><td><a class="button is-danger" id="btnrmv"><i class="fa fa-trash"></i></a></td>'+
-                                '<td> <input id="serv" type="text" name="services[]" class="input" value="'+ (service)+'" readonly></td>'+
+                                '<td> <input  type="hidden" name="services[]" class="input" value="'+ (idSer)+'" readonly></td>'+
+                                '<td> <input id="serv" type="text" class="input" value="'+ (service)+'" readonly></td>'+
                                 '<td> <input id="tim" type="text"  name="durations[]" class="input" value="' + (time)+'" readonly></td>'+
                                 '<td> <input id="pri" type="text"  name="prices[]" class="input" value="' + (price)+'" readonly></td>'+
                                 '<td> <input id="tot" type="text"  name="subtol[]" class="input" value="' + (total)+'" readonly></td>'+
