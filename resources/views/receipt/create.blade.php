@@ -11,6 +11,8 @@
                         </div>
                     </div>
                 </div>
+                <form action="{{ Route('receipt.store') }}" method="POST" >
+                    @csrf
                 <div class="box" style="background-color:#f0f2ef;">
                     <div class="columns">
                         <div class="column">
@@ -34,12 +36,12 @@
                     <div class="columns">
                         <div class="column is-4">
                             <div class="control">
-                                <input type="date" class="input" placeholder="Fecha del servicio">
+                                <input type="date" name="date_service" class="input" placeholder="Fecha del servicio" id="dat" min="{{ $day= date('Y-m-d') }}">
                             </div>
                         </div>
                         <div class="column is-4">
                             <div class="control">
-                                    <input list="Horas" class="input">
+                                    <input list="Horas" name="hour" class="input">
 
                                     <datalist id="Horas">
                                       <option value="8:00">
@@ -67,7 +69,7 @@
                             </div>
                         <div class="column is-4">
                             <div class="control">
-                                <input type="text" class="input" id="full" placeholder="Empleado">
+                                <input type="text" name="employee" class="input" id="full" placeholder="Empleado">
                             </div>
                         </div>
                     </div>
@@ -76,7 +78,7 @@
                     <div class="columns">
                         <div class="column is-7">
                             <div class="control">
-                                <input type="text" class="input" id="name" placeholder="Servicio">
+                                <input type="text"  class="input" id="name" placeholder="Servicio">
                             </div>
                         </div>
                         <div class="column is-2">
@@ -92,13 +94,13 @@
                                     </div>
                                 </div>
                             <div class="control">
-                                <input type="text" class="input" id="price" value="0.00" readonly>
+                                <input type="text"  class="input" id="price" value="0" readonly>
                             </div>
                         </div>
                         </div>
                         <div class="column is-1">
                                 <div class="control">
-                                        <button id="call-btn" class="button is-info"><i class="fa fa-plus"></i></button>
+                                        <a href="#" id="call-btn" class="button is-info"><i class="fa fa-plus"></i></a>
                                     </div>
                         </div>
                         </div>
@@ -124,11 +126,12 @@
                     </tfoot>
                 </table>
                 <button class="button is-fullwidth is-info is-outlined">Guardar</button>
+            </form>
                 </div>
         </div>
 </div>
 </div>
-<script>   
+<script>
 
 $(document).ready(function(){
 
@@ -201,11 +204,11 @@ $('#time').keyup(function(){
 
                         var total = parseFloat($('#price').val()) * parseFloat($('#time').val());
 
-                        $('<tr><td><a href="#" class="button is-danger"><i class="fa fa-trash"></i></a></td>'+
-                                '<td id="serv">'+(service)+'</td>'+
-                                '<td id="tim">'+ (time) +'</td>'+
-                                '<td id="pri">'+ (price) +'</td>'+
-                                '<td id="tot">'+ (total) +'</td>'+
+                        $('<tr><td><a class="button is-danger" id="btnrmv"><i class="fa fa-trash"></i></a></td>'+
+                                '<td> <input id="serv" type="text" name="services[]" class="input" value="'+ (service)+'" readonly></td>'+
+                                '<td> <input id="tim" type="text"  name="durations[]" class="input" value="' + (time)+'" readonly></td>'+
+                                '<td> <input id="pri" type="text"  name="prices[]" class="input" value="' + (price)+'" readonly></td>'+
+                                '<td> <input id="tot" type="text"  name="subtol[]" class="input" value="' + (total)+'" readonly></td>'+
                             '</tr>').appendTo('table');   
                         }
 
@@ -217,12 +220,20 @@ $('#time').keyup(function(){
 
                     $.fn.myFunctionCalculate = function(){
                         var subs = 0;
+
+                        var totals = $('#mytable #tot');
+                        if(totals.length == 0){
+                            $('#total').html(subs);
+                        } else {
+        
                         $('#mytable #tot').each(function(){
-                            subs += parseFloat(($(this).html()));
+                            subs += parseFloat(($(this).val()));
                         
                         $('#total').html(subs);
                         })
                     }
+                    }
+                    
 
                     $('#call-btn').click(function(){
                        
@@ -232,9 +243,17 @@ $('#time').keyup(function(){
                         
                         
                     });
+
+                    	//Eliminar fila.
+	                $('#mytable').on('click', '#btnrmv', function(){		
+		                $(this).parents('tr').eq(0).remove();
+                        $.fn.myFunctionCalculate();
+                        });
+
                 });
                 
                 </script>
+
 @endsection
 
 
