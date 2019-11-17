@@ -18,6 +18,7 @@ class CreateReceiptsTable extends Migration
             $table->unsignedBigInteger('customer_id');
             $table->unsignedBigInteger('employee_id');
             $table->unsignedBigInteger('schedule_id');
+            $table->string('address',60);
             $table->date('date_service');
             $table->time('service_end');
             $table->boolean('is_active')->default(1);

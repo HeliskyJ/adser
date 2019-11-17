@@ -20,7 +20,6 @@ class CreateReceiptDetailsTable extends Migration
             $table->tinyInteger('duration')->unsigned();
             $table->decimal('price',10,3)->unsigned();
             $table->decimal('total',10,4)->unsigned();
-            $table->string('address',60);
             $table->string('description', 60)->nullable();
             $table->timestamps();
 
