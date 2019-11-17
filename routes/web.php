@@ -49,5 +49,6 @@ Route::patch('/service/delete/{serv}', 'ServiceController@destroy')->name('servi
 Route::get('/receipt/findCustomer', 'ReceiptController@findCustomer');
 Route::get('/receipt/findService', 'ReceiptController@findService');
 Route::get('/receipt/findEmployee', 'ReceiptController@findEmployee');
-Route::get('/receipts', 'ReceiptController@create')->name('receipt.create');
+Route::get('/receipt', 'ReceiptController@create')->name('receipt.create');
 Route::post('/receipt', 'ReceiptController@store')->name('receipt.store');
+Route::get('/receipt/{rec}', 'ReceiptController@show')->name('receipt.show');
