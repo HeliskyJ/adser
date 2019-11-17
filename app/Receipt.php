@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Receipt extends Model
 {
-    protected $fillable = ['customer_id', 'employee_id', 'schedule_id','date_service', 'service_time', 'service_end', 'is_active'];
+    protected $fillable = ['customer_id', 'employee_id', 'schedule_id','date_service', 'address', 'service_time', 'service_end', 'is_active'];
 
     public function customer()
     {
@@ -15,9 +15,14 @@ class Receipt extends Model
 
     public function employee()
     {
-        return $this->belognsTo('App\Employee');
+        return $this->belongsTo('App\Employee');
     }
 
+    public function schedule()
+    {
+        return $this->belongsTo('App\Schedule');
+
+    }
     public function details()
     {
         return $this->hasMany('App\ReceiptDetail');

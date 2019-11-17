@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ReceiptDetail extends Model
 {
-    protected $fillable = ['duration', 'price', 'total', 'address', 'description'];
+    protected $fillable = ['duration', 'price', 'total', 'description'];
 
     public function receipt()
     {
