@@ -8,7 +8,7 @@
                     <div class="title is-3"> Actualización de información
                         <div class="field is-grouped is-grouped-right">
                         <div class="control">
-                            <button class="button is-warning is-gruped-right">Volver</button>
+                            <a href="{{ route('employee.index') }}" class="button is-warning is-gruped-right">Volver</a>
                         </div>
                     </div>
                 </div>

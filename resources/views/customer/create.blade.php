@@ -9,7 +9,7 @@
                     <div class="title is-2"> Crear Cliente
                         <div class="field is-grouped is-grouped-right">
                         <div class="control">
-                            <button class="button is-warning is-gruped-right">Volver</button>
+                            <a href="{{ route('customer.index') }}" class="button is-warning is-gruped-right">volver</a>
                         </div>
                     </div>
                 </div>

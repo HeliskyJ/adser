@@ -23,7 +23,7 @@
                     <div class="column">
                         <div class="field is-grouped is-grouped-right">
                         <div class="control">
-                            <button class="button is-warning">Volver</button>
+                            <a href="{{ route('employee.create') }}" class="button is-success">Nuevo Empleado</a>
                         </div>
                     </div>
                 </div>
