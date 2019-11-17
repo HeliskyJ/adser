@@ -17,8 +17,7 @@ class ReceiptDetailsTableSeeder extends Seeder
                 'service_id' => '1',
                 'duration' => '2',
                 'price' => '50.00',
-                'total' => '100.00',
-                'address' => 'Colinas verdes, guayabon'
+                'total' => '100.00'
 
             ],
 
@@ -27,9 +26,7 @@ class ReceiptDetailsTableSeeder extends Seeder
                 'service_id' => '2',
                 'duration' => '1',
                 'price' => '10.00',
-                'total' => '10.00',
-                'address' => 'Colinas verdes, guayabon'
-
+                'total' => '10.00'
             ],
 
             [
@@ -37,9 +34,7 @@ class ReceiptDetailsTableSeeder extends Seeder
                 'service_id' => '1',
                 'duration' => '2',
                 'price' => '50.00',
-                'total' => '100.00',
-                'address' => 'Colinas verdes'
-
+                'total' => '100.00'
             ],
         ];
         DB::table('receipt_details')->insert($detalle);

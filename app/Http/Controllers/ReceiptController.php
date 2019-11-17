@@ -77,7 +77,6 @@ class ReceiptController extends Controller
                 $receiptDetail = array(
                 'receipt_id' => $idd,
                 'service_id' => $request->service_id[$item],
-                'address'    => $request->address[$item],
                 'duration'   => $request->durations[$item],
                 'price'      => $request->prices[$item],
                 'total'      => $request->subtol[$item]
@@ -85,7 +84,7 @@ class ReceiptController extends Controller
                 ReceiptDetail::insert($receiptDetail);
             }
         } 
-        return redirect('receipt.create');
+        return redirect()->route('receipt.show', ['rec'=> $idd] );
     }
 
     /**
@@ -94,9 +93,10 @@ class ReceiptController extends Controller
      * @param  \App\Receipt  $receipt
      * @return \Illuminate\Http\Response
      */
-    public function show(Receipt $receipt)
+    public function show($id)
     {
-        //
+        $receipt = Receipt::find($id)->details;
+        return view('receipt.show', compact('receipt'));
     }
 
     /**
