@@ -21,6 +21,7 @@ class CreateReceiptsTable extends Migration
             $table->string('address',60);
             $table->date('date_service');
             $table->time('service_end');
+            $table->string('description', 60)->nullable();
             $table->boolean('is_active')->default(1);
             $table->boolean('done')->default(0);
             $table->timestamps();

@@ -7,7 +7,7 @@
                     <div class="title is-2"> Servicio Nuevo
                         <div class="field is-grouped is-grouped-right">
                         <div class="control">
-                            <button class="button is-warning is-gruped-right">Volver</button>
+                            <a href="{{ route('service.index') }}" class="button is-warning is-gruped-right">Volver</a>
                         </div>
                     </div>
                 </div>

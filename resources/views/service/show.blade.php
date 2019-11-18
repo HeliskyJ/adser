@@ -12,8 +12,8 @@
                         <div class="column is-3">
                                 <div class="field is-grouped is-grouped-right">
                                         <div class="control">
-                                            <button class="button is-warning">Volver</button>
-                                        </div>
+                                            <a href="{{ route('service.index') }}" class="button is-warning is-gruped-right">Volver</a>
+                                          </div>
                                     </div>
                         </div>
                     </div>

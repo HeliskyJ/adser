@@ -7,7 +7,7 @@
                     <div class="title is-2"> Agendar Servicio
                         <div class="field is-grouped is-grouped-right">
                         <div class="control">
-                            <button class="button is-warning is-gruped-right">Volver</button>
+                            <a href="{{ route('receipt.create') }}" class="button is-success is-gruped-right">Agendar Servicio</a>
                         </div>
                     </div>
                 </div>
@@ -111,7 +111,7 @@
                                 </tr>
                     </tfoot>
                 </table><br>
-                <textarea class="textarea" name="desc" rows="2" placeholder="Descripción"></textarea>
+                <textarea class="textarea" name="description" rows="2" placeholder="Descripción"></textarea>
                 <hr>
                 <button class="button is-fullwidth is-info is-outlined">Guardar</button>
             </form>

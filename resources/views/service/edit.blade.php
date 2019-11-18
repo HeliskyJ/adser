@@ -8,8 +8,8 @@
                     <div class="title is-3"> Actualización de información
                         <div class="field is-grouped is-grouped-right">
                         <div class="control">
-                            <button class="button is-warning is-gruped-right">Volver</button>
-                        </div>
+                                <a href="{{ route('service.index') }}" class="button is-warning is-gruped-right">Volver</a>
+                            </div>
                     </div>
                 </div>
             <form action="{{ Route('service.update', $service[0]->id) }}" method="POST">
