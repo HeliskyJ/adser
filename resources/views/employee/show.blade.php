@@ -37,10 +37,10 @@
                     </div>
                     <div class="field is-grouped is-grouped-right">
                             <div class="control">
-                                <button class="button is-link">Historial de Servicios</button>
+                                <a href="{{ route('employee.records', $employee[0]->id) }}" class="button is-link">Historial de Servicios</a>
                             </div>
                             <div class="control">
-                                    <button class="button is-primary">Servicios Pendientes</button>
+                                    <a href="{{ route('employee.pending', $employee[0]->id) }}" class="button is-primary">Servicios Pendientes</a>
                                 </div>
                         </div>
                     <div class="box">
@@ -48,13 +48,13 @@
                         <div class="columns">
                             <div class="column is-6">
                                 <div class="box">
-                                    <div class="title is-2" align="center">0 </div>
+                                    <div class="title is-2" align="center">{{ $record }} </div>
                                         <p align="center">Servicios Prestados</p>
                                 </div>
                             </div>
                             <div class="column is-6">
                                 <div class="box">
-                                    <div class="title is-2" align="center">0</div>
+                                    <div class="title is-2" align="center">{{ $cancel }}</div>
                                         <p align="center">Servicios Cancelados</p>
                                 </div>
                             </div>

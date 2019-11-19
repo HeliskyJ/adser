@@ -37,6 +37,8 @@ Route::get('/employee/{emp}', 'EmployeeController@show')->name('employee.show');
 Route::get('/employee/{emp}/edit', 'EmployeeController@edit')->name('employee.edit');
 Route::patch('/employees/{emp}', 'EmployeeController@update')->name('employee.update');
 Route::patch('employee/delete/{emp}', 'EmployeeController@destroy')->name('employee.delete');
+Route::get('employee/record/{id}', 'EmployeeController@receipts')->name('employee.records');
+Route::get('employee/pending/{id}', 'EmployeeController@pendingServices')->name('employee.pending');
 
 Route::get('/services', 'ServiceController@index')->name('service.index');
 Route::get('/service', 'ServiceController@create')->name('service.create');

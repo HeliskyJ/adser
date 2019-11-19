@@ -48,10 +48,12 @@ class EmployeeController extends Controller
      * @param  \App\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function show($cui)
+    public function show($id)
     {
-        $employee = Employee::where('cui', $cui)->get();
-        return view('employee.show', compact('employee'));
+        $record = Employee::find($id)->receipts->where('done', 1)->where('is_active', 1)->count();
+        $cancel = Employee::find($id)->receipts->where('done', 0)->where('is_active', 0)->count();
+        $employee = Employee::where('id', $id)->get();
+        return view('employee.show', compact('employee', 'record', 'cancel'));
     }
 
     /**
@@ -90,5 +92,17 @@ class EmployeeController extends Controller
     {
         $employee = Employee::whereId($employee)->update(array('deleted'=>1));
         return redirect('employees');
+    }
+
+    public function receipts($id)
+    {
+        $receipts = Employee::find($id)->receipts->where('done', 1)->where('is_active', 1);
+        return view('employee.showrecords', compact('receipts'));
+    }
+
+    public function pendingServices($id)
+    {
+        $receipts = Employee::find($id)->receipts->where('done', 0)->where('is_active', 1);
+        return view('employee.showpending', compact('receipts'));
     }
 }

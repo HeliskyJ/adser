@@ -5,7 +5,7 @@
         <div class="container">
             <div class="column is-2"></div>
                 <div class="box">
-                    <div class="title is-2">Empleados</div>
+                    <div class="title is-2">Servicios Prestados</div>
                     <div class="columns">
                         <div class="column is-half">
                     <div class="box">
@@ -23,7 +23,7 @@
                     <div class="column">
                         <div class="field is-grouped is-grouped-right">
                         <div class="control">
-                            <a href="{{ route('employee.create') }}" class="button is-success">Nuevo Empleado</a>
+                            <a href="{{ route('receipt.create') }}" class="button is-success">Agendar Servicio</a>
                         </div>
                     </div>
                 </div>
@@ -32,21 +32,25 @@
                         <table class="table is-fullwidth is-striped is-hoverable">
                             <thead>
                                 <tr>
-                                    <th>CUI</th>
-                                    <th>Nombre</th>
+                                    <th>Código</th>
+                                    <th>Cliente</th>
+                                    <th>Fecha</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                    @foreach ($employees as $employee)
+                                    @foreach ($receipts as $receipt)
                                 <tr>
-                                    <td><a href="{{ route('employee.show', $employee->id) }}" class="has-text-link">{{ $employee->cui }}</a></td>
-                                    <td>{{ $employee->fullname }}</td>
-                                    <td><a href="{{ route('employee.edit', $employee->id) }}" class="button is-link is-outlined">
+                                    <td><a href="{{ route('receipt.show', $receipt->id) }}" class="has-text-link">
+                                        SERV{{ str_pad ($receipt->id, 6, '0', STR_PAD_LEFT) }} </div>
+                                    </a></td>
+                                    <td>{{ $receipt->customer->fullname }}</td>
+                                    <td>{{ $receipt->date_service }}</td>
+                                    <td><a href="#" class="button is-link is-outlined">
                                                     <span class="icon is-small">
-                                                        <i class="fas fa-edit"></i>
+                                                         <i class="fas fa-edit"></i>
                                         </a>
                                     </td>
-                                    <td><form action="{{ route('employee.delete', $employee->id) }}" method="POST">
+                                    <td><form action="#" method="POST">
                                         @csrf
                                         @method('PATCH')
                                         <button class="button is-danger ">
