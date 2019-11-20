@@ -39,7 +39,7 @@
                             <tbody>
                                     @foreach ($customers as $customer)
                                 <tr>
-                                    <td><a href="{{ Route('customer.show', $customer->cui) }}" class="has-text-link">{{ $customer->cui }}</a></td>
+                                    <td><a href="{{ Route('customer.show', $customer->id) }}" class="has-text-link">{{ $customer->cui }}</a></td>
                                     <td>{{ $customer->fullname }}</td>
                                     <td><a href="{{ Route('customer.edit', $customer->id) }}" class="button is-link is-outlined">
                                                     {{-- <span>Editar</span> --}}

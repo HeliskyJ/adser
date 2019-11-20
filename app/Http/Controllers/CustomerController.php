@@ -48,12 +48,12 @@ class CustomerController extends Controller
      * @param  \App\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function show($cui)
+    public function show($id)
     {
-        $customer = Customer::where('cui',$cui)->get();
-        return view('customer.show', compact('customer'));
-
-        $countPending = Customer::withCount('receipts.is_active', '0')->get();
+        $record = Customer::find($id)->receipts->where('done', 1)->where('is_active', 1)->count();
+        $cancel = Customer::find($id)->receipts->where('done', 0)->where('is_active', 0)->count();
+        $customer = Customer::where('id',$id)->get();
+        return view('customer.show', compact('customer', 'record', 'cancel'));
     }
 
     /**
