@@ -49,13 +49,21 @@
                             <div class="column is-6">
                                 <div class="box">
                                     <div class="title is-2" align="center">{{ $record }} </div>
-                                        <p align="center">Servicios Prestados</p>
+                                    @if ($record == 1)
+                                    <p align="center">Servicio Prestado</p>
+                                    @else
+                                    <p align="center">Servicios Prestados</p>    
+                                    @endif
                                 </div>
                             </div>
                             <div class="column is-6">
                                 <div class="box">
                                     <div class="title is-2" align="center">{{ $cancel }}</div>
-                                        <p align="center">Servicios Cancelados</p>
+                                    @if ($cancel == 1)
+                                    <p align="center">Servicio Cancelado</p>    
+                                    @else
+                                    <p align="center">Servicios Cancelados</p>                                        
+                                    @endif
                                 </div>
                             </div>
                         </div>

@@ -4,31 +4,32 @@
 <div class="column is-half">
         <div class="container">
                 <div class="box">
-                    <div class="title is-2"> Agendar Servicio
+                    <div class="title is-2"> Editar Servicio
                         <div class="field is-grouped is-grouped-right">
                         <div class="control">
-                            <a href="{{ route('receipt.create') }}" class="button is-success is-gruped-right">Agendar Servicio</a>
+                            <a href="#" class="button is-success is-gruped-right">Volver</a>
                         </div>
                     </div>
                 </div>
-                <form action="{{ Route('receipt.store') }}" method="POST" >
+                <form action="{{ route('receipt.update', $receipt[0]->id) }}" method="POST" >
+                    @method('PATCH')
                     @csrf
                 <div class="box" style="background-color:#f0f2ef;">
                     <div class="columns">
                         <div class="column">
                             <div class="control">
-                                <input type="hidden" id="idcustom" name="customer_id">
-                                <input type="text" id='fullname' class="input" placeholder="Cliente">
+                                <input type="hidden" id="idcustom" name="customer_id" value="{{ $receipt[0]->customer_id }}">
+                                <input type="text" id='fullname' class="input" value="{{ $receipt[0]->customer->fullname }}">
                             </div>
                         </div>
                         <div class="column">
                             <div class="control">
-                                <input type="tel" id="number_phone" class="input" placeholder="Télefono">
+                                <input type="tel" id="number_phone" class="input" value="{{ $receipt[0]->customer->number_phone }}">
                         </div>
                         </div>
                         <div class="column">
                             <div class="control">
-                                <input type="text" name="address" id="address" class="input" placeholder="Dirección">
+                                <input type="text" name="address" id="address" class="input" value="{{ $receipt[0]->customer->address }}">
                             </div>
                         </div>
                 </div>
@@ -37,14 +38,14 @@
                     <div class="columns">
                         <div class="column is-4">
                             <div class="control">
-                                <input type="date" name="date_service" class="input" placeholder="Fecha del servicio" id="dat" min="{{ $day= date('Y-m-d') }}" value="{{ $now=date('Y-m-d') }}">
-                                <input type="time" name="service_end" value="10:30">
+                                <input type="date" name="date_service" class="input" placeholder="Fecha del servicio" id="dat" min="{{ $day= date('Y-m-d') }}" value="{{ $receipt[0]->date_service }}">
+                                <input type="time" name="service_end" value="{{ $receipt[0]->service_end }}">
                             </div>
                         </div>
                         <div class="column is-4">
                             <div class="control">
                                     <select class="input" name="schedule_id">
-                                        <option value="0">----------</option>
+                                        <option selected value="{{ $receipt[0]->schedule_id }}">{{ $receipt[0]->schedule->hour }}</option>
                                 @foreach ($sc as $sch)
                              <option value="{{ $sch->id }}">{{ $sch->hour }}</option>
                                 @endforeach
@@ -53,8 +54,8 @@
                             </div>
                         <div class="column is-4">
                             <div class="control">
-                                <input type="hidden" name="employee_id" id="empId">
-                                <input type="text" class="input" id="full" placeholder="Empleado">
+                                <input type="hidden" name="employee_id" id="empId" value="{{ $receipt[0]->employee_id }}">
+                                <input type="text" class="input" id="full" value="{{ $receipt[0]->employee->fullname }}">
                             </div>
                         </div>
                     </div>
@@ -86,13 +87,13 @@
                         </div>
                         <div class="column is-1">
                                 <div class="control">
-                                        <a href="#" id="call-btn" class="button is-info"><i class="fas fa-plus-square" style='font-size:25px'></i></a>
+                                        <a href="#" id="call-btn" class="button is-info"><i class="fa fa-plus"></i></a>
                                     </div>
                         </div>
                         </div>
                     </div>
                 <hr>
-                <table class="table is-fullwidth is-hoverable" id="mytable"> 
+                <table class="table is-fullwidth is-hoverable" id="mytable">
                     <thead>
                         <tr>
                             <th></th>
@@ -103,6 +104,17 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($receipt[0]->details as $item)
+                        <tr>
+                            <td><a class="button is-danger" id="btnrmv"><i class="fa fa-trash"></i></a></td>
+                            <input type="hidden" name="detail_id[]" value="{{ $item->id }}">
+                            <input  type="hidden" name="service_id[]" class="input" value="{{ $item->service_id }}">
+                            <td> <input id="serv" type="text" class="input" value="{{ $item->service->name }}" readonly></td>
+                            <td> <input id="tim" type="text"  name="durations[]" class="input" value="{{ $item->duration }}" ></td>
+                            <td> <input id="pri" type="text"  name="prices[]" class="input" value="{{ $item->price }}" readonly></td>
+                            <td> <input id="tot" type="text"  name="subtol[]" class="input" value="{{ $item->total }}"></td>
+                        </tr>
+                        @endforeach
                     </tbody>
                     <tfoot>
                             <tr>
@@ -254,6 +266,19 @@ $('#time').keyup(function(){
 
                 });
                 
+                </script>
+                <script>
+                $(document).ready(function(){
+        var subs = 0;
+        $(this).find('#mytable #tot').each(function(){
+          var suma = $(this).val();
+          if(!isNaN(suma) && suma.length !==0){
+            subs += parseFloat(suma);
+          }
+        });
+
+          $('#total', this).html(subs);
+      });       
                 </script>
 
 @endsection

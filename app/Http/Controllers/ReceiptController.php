@@ -105,9 +105,11 @@ class ReceiptController extends Controller
      * @param  \App\Receipt  $receipt
      * @return \Illuminate\Http\Response
      */
-    public function edit(Receipt $receipt)
+    public function edit( $receipt)
     {
-        //
+        $sc = Schedule::all()->where('is_active', 1);
+        $receipt = Receipt::where('id', $receipt)->get();
+        return view('receipt.edit', compact('receipt', 'sc'));
     }
 
     /**
@@ -117,9 +119,33 @@ class ReceiptController extends Controller
      * @param  \App\Receipt  $receipt
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Receipt $receipt)
+    public function update(Request $request, $receipt)
     {
-        //
+       $head = $request->all();
+       $receipt = Receipt::whereId($receipt)->update(array(
+           'customer_id' => $request->customer_id,
+           'employee_id' => $request->employee_id,
+           'schedule_id' => $request->schedule_id,
+           'address'     => $request->address,
+           'date_service'=> $request->date_service,
+           'service_end' => $request->service_end,
+           'description' => $request->description
+       ));
+       $idd =$receipt;
+       if(count($request->service_id)>0){
+        foreach($request->service_id as $item=>$v){
+            $detail = array(
+            'id'         => $request->detail_id[$item],
+            'receipt_id' => $idd,
+            'service_id' => $request->service_id[$item],
+            'duration'   => $request->durations[$item],
+            'price'      => $request->prices[$item],
+            'total'      => $request->subtol[$item]
+            );
+            ReceiptDetail::updateOrCreate($detail);
+        }
+       }
+       return redirect()->route('receipt.show', ['rec'=> $idd] );
     }
 
     /**
@@ -128,8 +154,15 @@ class ReceiptController extends Controller
      * @param  \App\Receipt  $receipt
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Receipt $receipt)
+    public function destroy($id)
     {
-        //
+        Receipt::whereId($id)->first()->update(array('is_active'=>0));
+        return redirect('employees');
+    }
+
+    public function done($id)
+    {
+        Receipt::whereId($id)->where('is_active', 1)->update(array('done'=>1));
+        return redirect('employees');
     }
 }

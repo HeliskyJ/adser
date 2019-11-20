@@ -45,12 +45,21 @@
                                     </a></td>
                                     <td>{{ $receipt->customer->fullname }}</td>
                                     <td>{{ $receipt->date_service }}</td>
-                                    <td><a href="#" class="button is-link is-outlined">
+                                    <td><a href="{{ route('receipt.edit', $receipt->id) }}" class="button is-link is-outlined">
                                                     <span class="icon is-small">
                                                          <i class="fas fa-edit"></i>
                                         </a>
                                     </td>
-                                    <td><form action="#" method="POST">
+                                    <td><form action="{{ route('receipt.done', $receipt->id) }}" method="POST">
+                                        @csrf
+                                        @method('PATCH')
+                                        <button class="button is-warning is-outlined is-small">
+                                            <span class="icon is-small">
+                                                <i class="fas fa-check-circle" style='font-size:40px;color:#70cc9e'></i>
+                                            </button>
+                                    </form>
+                                    </td>
+                                    <td><form action="{{ route('receipt.destroy', $receipt->id) }}" method="POST">
                                         @csrf
                                         @method('PATCH')
                                         <button class="button is-danger ">

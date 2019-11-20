@@ -14,6 +14,7 @@
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ReceiptController;
 use App\Http\Controllers\ServiceController;
+use App\Receipt;
 
 Route::get('/', function () {
     return view('welcome');
@@ -54,3 +55,7 @@ Route::get('/receipt/findEmployee', 'ReceiptController@findEmployee');
 Route::get('/receipt', 'ReceiptController@create')->name('receipt.create');
 Route::post('/receipt', 'ReceiptController@store')->name('receipt.store');
 Route::get('/receipt/{rec}', 'ReceiptController@show')->name('receipt.show');
+Route::get('/receipt/{rec}/edit', 'ReceiptController@edit')->name('receipt.edit');
+Route::patch('/receipt/{rec}', 'ReceiptController@update')->name('receipt.update');
+Route::patch('/receipt/cancel/{rec}', 'ReceiptController@destroy')->name('receipt.destroy');
+Route::patch('/receipt/done/{rec}', 'ReceiptController@done')->name('receipt.done');
