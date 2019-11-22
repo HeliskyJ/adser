@@ -22,6 +22,7 @@
 </head>
 <body id="bodyNav">
     <div id="app">
+        @if(Auth::check())
         <header class="hero" >
             <div class="hero_head">
               <nav class="navbar has-background-grey-dark">
@@ -76,7 +77,11 @@
                       <i class="fa fa-power-off"></i>
                     </span>
                     <font style="vertical-align:inherit;">
-                    <font style="vertical-align:inherit;">&nbsp;Cerrar sesion</font>
+                    <font style="vertical-align:inherit;">&nbsp;
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button>Cerrar Sesion</button>
+                            </form></font>
                     </font>
                   </a>
                 </div>
@@ -85,9 +90,13 @@
           </nav>
         </div>
           </header>
+          @endif
         <main class="py-4">
+            @if(Auth::check())
             @include('layouts.nav')
+            @endif
             @yield('content')
+            @include('layouts.footer')
         </main>
     </div>
     <script>
