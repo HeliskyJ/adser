@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="column is-half">
-        <div class="container">
+<div class="column is-four-fifths">
+        <div class="container"><br><br>
                 <div class="box">
                     <div class="title is-2"> Agendar Servicio
                         <div class="field is-grouped is-grouped-right">
@@ -116,6 +116,7 @@
                 <button class="button is-fullwidth is-info is-outlined">Guardar</button>
             </form>
                 </div>
+        </div>
         </div>
 </div>
 </div>
