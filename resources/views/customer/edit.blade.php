@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="column is-half">
-        <div class="container">
+<div class="column is-four-fifths">
+        <div class="container"><br><br>
                 <div class="box">
                         <div class="form-group">
                     <div class="title is-3"> Actualización de información
@@ -75,7 +75,7 @@
             
                 </div>
             </div>
+        </div>
 </div>
 </div>
-
 @endsection

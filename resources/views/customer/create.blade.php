@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="column is-half">
-        <div class="container">
+<div class="column is-four-fifths">
+        <div class="container"><br><br>
                 <div class="box">
                         <div class="form-group">
                                 @csrf
@@ -75,6 +75,7 @@
             
                 </div>
             </div>
+        </div>
 </div>
 </div>
 
