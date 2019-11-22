@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="column is-half">
+<div class="column is-four-fifths">
         <div class="container">
-            <div class="column is-2"></div>
+            <div class="column is-2"></div><br><br>
                 <div class="box">
                     <div class="title is-2">Servicios Prestados</div>
                     <div class="columns">
@@ -66,6 +66,7 @@
                         </table>
                     </div>
                     </div>
+</div>
         </div>
 </div>              
 @endsection
