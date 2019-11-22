@@ -15,24 +15,76 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}"></script>
 </head>
-<body>
+<body id="bodyNav">
     <div id="app">
-          
-<section class="hero is-primary is-size-8">
-        <div class="hero-body">
-          <div class="container">
-              <img src="{{ asset('/images/clean.png') }}" alt="ADSER Servicio de Limpieza" style="width:8em" >
-            <h1 class="title">
-              ADSER
-            </h1>
-          </div>
+        <header class="hero" >
+            <div class="hero_head">
+              <nav class="navbar has-background-grey-dark">
+                <div class="navbar-brand">
+                  <a href="" class="navbar-item is--brand">
+                    <img class="navbar-brand-logo" src="{{ asset('images/cleann.png') }}" alt="Ceansy">
+                  </a>
+                  <a href="" class="navbar-item is-tab is-hidden-mobile is-active">
+                    <span class="icon is-medium">
+                      <i class="fa fa-home"></i>
+                    </span>
+                    <font style="vertical-align:inherit;">
+                      <font style="vertical-align: inherit;">Inicio</font>
+                    </font>
+                  </a>
+                    <a href="" class="navbar-item is-tab is-hidden-mobile is-active">
+                        <font style="vertical-align:inherit;">
+                        <font style="vertical-align:inherit;">about</font>
+                      </font>
+                      </a>
+                      <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                          <span aria-hidden="true"></span>
+                          <span aria-hidden="true"></span>
+                          <span aria-hidden="true"></span>
+                        </a>
+                  </div>
+            <div class="navbar-menu navbar-end" id="navMenu">
+              <a href="" class="nabvar-item is-tab is-hidden is-active">
+                Home
+              </a>
+              <div class="navbar-item has-dropdown is-hoverable">
+                <a href="" class="nabvar-item nabvar-link">
+                  <figure class="image is-32x32" style="magin-right:.5em">
+                  <img src="{{ asset('images/men.png') }}" alt="">
+                  </figure>
+                  <font style="vertical-align:inherit;">
+                  <font style="vertical-align:inherit;">Hely Mendez</font>
+                </font>
+                </a>
+                <div class="navbar-dropdown is-right">
+                  <a href="" class="navbar-item">
+                    <span class="icon is-small">
+                      <i class="fa fa-user-o"></i>
+                    </span>
+                    <font style="vertical-align: inherit;">
+                    <font class="has-text-black-ter" style="vertical-align:inherit;">&nbsp; Perfil</font>
+                  </font>
+                  </a>
+                  <hr class="navbar-divider">
+                  <a href="" class="nabvar">
+                    <span class="icon is-small">
+                      <i class="fa fa-power-off"></i>
+                    </span>
+                    <font style="vertical-align:inherit;">
+                    <font style="vertical-align:inherit;">&nbsp;Cerrar sesion</font>
+                    </font>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </nav>
         </div>
-      </section>
-                  <hr>
+          </header>
         <main class="py-4">
             @include('layouts.nav')
             @yield('content')
@@ -43,5 +95,18 @@
       return '{{ url('')}}/' + url;
     }
     </script>
+    <script>
+    $(document).ready(function() {
+
+// Check for click events on the navbar burger icon
+$(".navbar-burger").click(function() {
+
+    // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+    $(".navbar-burger").toggleClass("is-active");
+    $(".navbar-menu").toggleClass("is-active");
+
+});
+});</script>
+
 </body>
 </html>
