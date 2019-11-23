@@ -21,7 +21,7 @@
                         <div class="field">
                             <label for="name" class="label">Nombre</label>
                             <div class="control">
-                                <input type="text" name="name" class="input" placeholder="Limpieza" autofocus required>
+                                <input type="text" name="name" class="input" value="{{ old('name') }}" placeholder="Limpieza" autofocus required>
                                 @error('name')
                                 <div class="help is-danger">{{ $message }}</div>
                           @enderror
@@ -31,7 +31,7 @@
                         <div class="field">
                             <label for="price" class="label">Precio</label>
                             <div class="control">
-                                <input type="text" name="price" class="input" placeholder="0.000" required>
+                                <input type="text" name="price" class="input" value="{{ old('price') }}" placeholder="0.000" required>
                                 @error('price')
                                 <div class="help is-danger">{{ $message }}</div>
                           @enderror
@@ -40,7 +40,7 @@
 
                         <div class="field">
                             <label for="description" class="label">Descripción</label>
-                            <textarea name="description" cols="30" rows="10" class="textarea"></textarea>
+                            <textarea name="description" cols="30" rows="10" class="textarea">{{ old('description') }}</textarea>
                             @error('description')
                             <div class="help is-danger">{{ $message }}</div>
                       @enderror

@@ -17,18 +17,18 @@
                     <div class="columns">
                         <div class="column">
                             <div class="control">
-                                <input type="hidden" id="idcustom" name="customer_id">
-                                <input type="text" id='fullname' class="input" placeholder="Cliente">
+                                <input type="hidden" id="idcustom" value="{{ old('customer_id') }}" name="customer_id">
+                                <input type="text" id='fullname' class="input" value="{{ old('fullname') }}" placeholder="Cliente">
                             </div>
                         </div>
                         <div class="column">
                             <div class="control">
-                                <input type="tel" id="number_phone" class="input" placeholder="Télefono">
+                                <input type="tel" id="number_phone" class="input" value="{{ old('number_phone') }}" placeholder="Télefono">
                         </div>
                         </div>
                         <div class="column">
                             <div class="control">
-                                <input type="text" name="address" id="address" class="input" placeholder="Dirección">
+                                <input type="text" name="address" id="address" class="input" value="{{ old('address') }}" placeholder="Dirección">
                             </div>
                         </div>
                 </div>
@@ -37,7 +37,7 @@
                     <div class="columns">
                         <div class="column is-4">
                             <div class="control">
-                                <input type="date" name="date_service" class="input" placeholder="Fecha del servicio" id="dat" min="{{ $day= date('Y-m-d') }}" value="{{ $now=date('Y-m-d') }}">
+                                <input type="date" name="date_service" class="input"  placeholder="Fecha del servicio" id="dat" min="{{ $day= date('Y-m-d') }}" value="{{ $now=date('Y-m-d') }}">
                                 <input type="time" name="service_end" value="10:30">
                             </div>
                         </div>
@@ -46,15 +46,15 @@
                                     <select class="input" name="schedule_id">
                                         <option value="0">----------</option>
                                 @foreach ($sc as $sch)
-                             <option value="{{ $sch->id }}">{{ $sch->hour }}</option>
+                             <option value="{{ $sch->id }}  {{ old('schedule_id') == "$sch->id " ? 'selected' : '' }}">{{ $sch->hour }}</option>
                                 @endforeach
                             </select>     
                             </div>
                             </div>
                         <div class="column is-4">
                             <div class="control">
-                                <input type="hidden" name="employee_id" id="empId">
-                                <input type="text" class="input" id="full" placeholder="Empleado">
+                                <input type="hidden" name="employee_id" value="{{ old('employee_id') }}" id="empId">
+                                <input type="text" class="input" id="full" value="{{ old('fu') }}" name="fu" placeholder="Empleado">
                             </div>
                         </div>
                     </div>

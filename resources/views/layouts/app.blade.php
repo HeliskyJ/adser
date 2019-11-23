@@ -73,14 +73,14 @@
                   </a>
                   <hr class="navbar-divider">
                   <a href="" class="nabvar">
-                    <span class="icon is-small">
-                      <i class="fa fa-power-off"></i>
-                    </span>
                     <font style="vertical-align:inherit;">
-                    <font style="vertical-align:inherit;">&nbsp;
-                        <form action="{{ route('logout') }}" method="POST">
-                            @csrf
-                            <button>Cerrar Sesion</button>
+                        <font style="vertical-align:inherit;">&nbsp;
+                            <form action="{{ route('logout') }}" method="POST">
+                                @csrf
+                            <button class="button">                           
+                               <span class="icon is-small">
+                                <i class="fa fa-power-off"></i>
+                              </span> Cerrar Sesion</button>
                             </form></font>
                     </font>
                   </a>
