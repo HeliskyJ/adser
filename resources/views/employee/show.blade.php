@@ -46,7 +46,7 @@
                     <div class="box">
                         <br><br>
                         <div class="columns">
-                            <div class="column is-6">
+                            <div class="column">
                                 <div class="box">
                                     <div class="title is-2" align="center">{{ $record }} </div>
                                     @if ($record == 1)
@@ -56,7 +56,17 @@
                                     @endif
                                 </div>
                             </div>
-                            <div class="column is-6">
+                            <div class="column">
+                                <div class="box">
+                                    <div class="title is-2" align="center">{{ $pending }}</div>
+                                    @if ($pending == 1)
+                                    <p align="center">Servicio Pendiente</p>    
+                                    @else
+                                    <p align="center">Servicios Pendientes</p>                                        
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="column">
                                 <div class="box">
                                     <div class="title is-2" align="center">{{ $cancel }}</div>
                                     @if ($cancel == 1)

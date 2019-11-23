@@ -61,10 +61,11 @@ class EmployeeController extends Controller
      */
     public function show($id)
     {
-        $record = Employee::find($id)->receipts->where('done', 1)->where('is_active', 1)->count();
-        $cancel = Employee::find($id)->receipts->where('done', 0)->where('is_active', 0)->count();
+        $pending = Employee::find($id)->receipts->where('is_active', 1)->where('done', 0)->count();
+        $record  = Employee::find($id)->receipts->where('is_active', 1)->where('done', 1)->count();
+        $cancel  = Employee::find($id)->receipts->where('is_active', 0)->where('done', 0)->count();
         $employee = Employee::where('id', $id)->get();
-        return view('employee.show', compact('employee', 'record', 'cancel'));
+        return view('employee.show', compact('employee', 'record', 'pending', 'cancel'));
     }
 
     /**
