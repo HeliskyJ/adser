@@ -12,11 +12,17 @@ use App\Receipt,
 
 class ReceiptController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
     private $customer = null;
     private $service = null;
     private $employee = null;
 
     public function __CONSTRUCT(){
+        $this->middleware('auth');
         $this->customer = new Customer();
         $this->service = new Service();
         $this->employee = new Employee();
