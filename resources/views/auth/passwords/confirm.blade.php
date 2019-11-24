@@ -1,37 +1,37 @@
 @extends('layouts.app')
-
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="columns">
+        <div class="column"></div>
+        <div class="column is-5"><br><br>
             <div class="card">
-                <div class="card-header">{{ __('Confirm Password') }}</div>
-
-                <div class="card-body">
+                <header class="card-header">
+                    <p class="card-header-title">
+                            {{ __('Confirm Password') }}
+                    </p>
+                </header>
+                <div class="card-content">
+                    <div class="content">
                     {{ __('Please confirm your password before continuing.') }}
-
                     <form method="POST" action="{{ route('password.confirm') }}">
                         @csrf
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
+                        <div class="field">
+                            <div class="column">
+                                <label for="password" class="label">{{ __('Password') }}</label>
+                                <input id="password" type="password" class="input @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
                                 @error('password')
-                                    <span class="invalid-feedback" role="alert">
+                                    <span class="help is-danger" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
                         </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Confirm Password') }}
-                                </button>
+                        <footer class="card-footer">
+                            <button type="submit" class="card-footer-item">{{ __('Confirm Password') }}</button>
+                            <a href="{{ route('service.index') }}" class="card-footer-item">Cancelar</a>
+                        </footer>
+                               <br>
 
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
@@ -42,8 +42,13 @@
                         </div>
                     </form>
                 </div>
+                </div>
+        </div>
             </div>
         </div>
+        <div class="column"></div>
     </div>
+    </div>
+</div><br><br><br>
 </div>
 @endsection
