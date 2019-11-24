@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="hero is-fullheight letter">
+    <div class="hero-body">
+    </div>
+</div>
 <div class="column is-four-fifths">
         <div class="container">
             <div class="column is-2"></div><br><br>
