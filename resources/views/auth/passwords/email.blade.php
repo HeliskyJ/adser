@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-        <section class="hero  is-fullheight  has-background-grey"> 
+        <section class="hero  is-fullheight"> 
             <div class="columns">
                 <div class="column"></div>
             <div class="column is-5"><br><br><br><br>

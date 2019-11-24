@@ -1,16 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-<section class="hero  is-fullheight  has-background-grey"> 
+<section class="hero  is-fullheight letter" style="background-color:#ead8cc;"> 
     <div class="hero-body">
         <div class="container has-text-centered">
             <div class="">
-                <h3 class="title has-text-black"> {{ __('Login') }}</h3>
+                <h3 class="title is-1 has-text-black letter"> Iniciar Sesión</h3>
                 <hr class="login-hr">
-                <p class="subtitle has-text-black"> Por favor Inice Sesion</p>
                 <div class="box">
                     <div class="columns">
-                        <div class="column is-7">
+                        <div class="column is-7 is-hidden-mobile">
                                 <img src="{{ asset('images/people.png') }}" alt="">
                         </div>
                         <div class="column is-5 has-background-white-ter">
