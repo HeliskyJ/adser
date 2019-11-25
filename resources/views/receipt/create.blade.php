@@ -22,43 +22,68 @@
                         <div class="column">
                             <div class="control">
                                 <input type="hidden" id="idcustom" value="{{ old('customer_id') }}" name="customer_id">
-                                <input type="text" id='fullname' class="input" value="{{ old('fullname') }}" placeholder="Cliente">
+                                <input type="text" id='fullname' class="input" value="{{ old('fullname') }}" placeholder="Cliente" required>
+                                @error('customer_id')
+                                <div class="help is-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                         <div class="column">
                             <div class="control">
-                                <input type="tel" id="number_phone" class="input" value="{{ old('number_phone') }}" placeholder="Télefono">
+                                <input type="tel" id="number_phone" class="input" value="{{ old('number_phone') }}" placeholder="Télefono" required>
+                                @error('number_phone')
+                                <div class="help is-danger">{{ $message }}</div>
+                                @enderror
                         </div>
                         </div>
                         <div class="column">
                             <div class="control">
-                                <input type="text" name="address" id="address" class="input" value="{{ old('address') }}" placeholder="Dirección">
+                                <input type="text" name="address" id="address" class="input" value="{{ old('address') }}" placeholder="Dirección" required>
+                                @error('address')
+                                <div class="help is-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                 </div>
                 </div>
                 <div class="box">
                     <div class="columns">
-                        <div class="column is-4">
+                        <div class="column">
                             <div class="control">
-                                <input type="date" name="date_service" class="input"  placeholder="Fecha del servicio" id="dat" min="{{ $day= date('Y-m-d') }}" value="{{ $now=date('Y-m-d') }}">
-                                <input type="time" name="service_end" value="10:30">
+                                <input type="date" name="date_service" class="input"  placeholder="Fecha del servicio" id="dat" min="{{ $day= date('Y-m-d') }}" value="{{ $now=date('Y-m-d') }}" required>
+                                @error('date_service')
+                                <div class="help is-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
-                        <div class="column is-4">
+                        <div class="column">
+                                <div class="control">
+                                   <input type="time" name="service_end" class="input" required>
+                                    @error('service_end')
+                                    <div class="help is-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                        <div class="column">
                             <div class="control">
                                     <select class="input" name="schedule_id">
-                                        <option value="0">----------</option>
+                                        <option value="0" disabled selected>----------</option>
                                 @foreach ($sc as $sch)
-                             <option value="{{ $sch->id }}  {{ old('schedule_id') == "$sch->id " ? 'selected' : '' }}">{{ $sch->hour }}</option>
+                             <option value="{{ $sch->id }}  {{ old('schedule') == "$sch->id " ? 'selected' : '' }}">{{ $sch->hour }}</option>
                                 @endforeach
+                                @error('schedule_id')
+                                <div class="help is-danger">{{ $message }}</div>
+                                @enderror
                             </select>     
                             </div>
                             </div>
-                        <div class="column is-4">
+                        <div class="column">
                             <div class="control">
                                 <input type="hidden" name="employee_id" value="{{ old('employee_id') }}" id="empId">
-                                <input type="text" class="input" id="full" value="{{ old('fu') }}" name="fu" placeholder="Empleado">
+                                <input type="text" class="input" id="full" value="{{ old('fu') }}" name="fu" placeholder="Empleado" required>
+                                @error('employee_id')
+                                <div class="help is-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                     </div>
@@ -69,11 +94,17 @@
                             <div class="control">
                                 <input type="hidden" id="idService">
                                 <input type="text"  class="input" id="name" placeholder="Servicio">
+                                @error('idService')
+                                <div class="help is-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                         <div class="column is-2">
                             <div class="control">
                                 <input type="text" class="input" id="time" placeholder="horas">
+                                @error('time')
+                                <div class="help is-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                         <div class="column is-2">

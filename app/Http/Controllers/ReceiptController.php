@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Employee;
-use App\Receipt,
+use App\Employee,
+    App\Receipt,
     App\Customer,
     App\Service,
     App\ReceiptDetail,
