@@ -1,159 +1,159 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="column is-four-fifths">
 <div class="hero is-fullheight letter">
-        <div class="hero-body">
+        <div class="hero-head">
+                    <div class="container"><br><br>
+                            <div class="box">
+                                <div class="title is-2"> Agendar Servicio
+                                    <div class="field is-grouped is-grouped-right">
+                                    <div class="control">
+                                        <a href="{{ route('receipt.create') }}" class="button is-success is-gruped-right">Agendar Servicio</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <form action="{{ Route('receipt.store') }}" method="POST" >
+                                @csrf
+                            <div class="box" style="background-color:#f0f2ef;">
+                                <div class="columns">
+                                    <div class="column">
+                                        <div class="control">
+                                            <input type="hidden" id="idcustom" value="{{ old('customer_id') }}" name="customer_id">
+                                            <input type="text" id='fullname' class="input" value="{{ old('fullname') }}" placeholder="Cliente" required>
+                                            @error('customer_id')
+                                            <div class="help is-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="column">
+                                        <div class="control">
+                                            <input type="tel" id="number_phone" class="input" value="{{ old('number_phone') }}" placeholder="Télefono" required>
+                                            @error('number_phone')
+                                            <div class="help is-danger">{{ $message }}</div>
+                                            @enderror
+                                    </div>
+                                    </div>
+                                    <div class="column">
+                                        <div class="control">
+                                            <input type="text" name="address" id="address" class="input" value="{{ old('address') }}" placeholder="Dirección" required>
+                                            @error('address')
+                                            <div class="help is-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                            </div>
+                            </div>
+                            <div class="box">
+                                <div class="columns">
+                                    <div class="column">
+                                        <div class="control">
+                                            <input type="date" name="date_service" class="input"  placeholder="Fecha del servicio" id="dat" min="{{ $day= date('Y-m-d') }}" value="{{ $now=date('Y-m-d') }}" required>
+                                            @error('date_service')
+                                            <div class="help is-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="column">
+                                            <div class="control">
+                                               <input type="time" name="service_end" class="input" required>
+                                                @error('service_end')
+                                                <div class="help is-danger">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    <div class="column">
+                                        <div class="control">
+                                                <select class="input" name="schedule_id">
+                                                    <option value="0" disabled selected>----------</option>
+                                            @foreach ($sc as $sch)
+                                         <option value="{{ $sch->id }}  {{ old('schedule') == "$sch->id " ? 'selected' : '' }}">{{ $sch->hour }}</option>
+                                            @endforeach
+                                            @error('schedule_id')
+                                            <div class="help is-danger">{{ $message }}</div>
+                                            @enderror
+                                        </select>     
+                                        </div>
+                                        </div>
+                                    <div class="column">
+                                        <div class="control">
+                                            <input type="hidden" name="employee_id" value="{{ old('employee_id') }}" id="empId">
+                                            <input type="text" class="input" id="full" value="{{ old('fu') }}" name="fu" placeholder="Empleado" required>
+                                            @error('employee_id')
+                                            <div class="help is-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                                </div><hr>
+                            <div class="box" style="background-color:#f0f2ef;">
+                                <div class="columns">
+                                    <div class="column is-7">
+                                        <div class="control">
+                                            <input type="hidden" id="idService">
+                                            <input type="text"  class="input" id="name" placeholder="Servicio">
+                                            @error('idService')
+                                            <div class="help is-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="column is-2">
+                                        <div class="control">
+                                            <input type="text" class="input" id="time" placeholder="horas">
+                                            @error('time')
+                                            <div class="help is-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="column is-2">
+                                        <div class="field has-addons">
+                                            <div class="control">
+                                                <div class="control">
+                                                    <a class="button is-static">Q.</a>
+                                                </div>
+                                            </div>
+                                        <div class="control">
+                                            <input type="text"  class="input" id="price" value="0" readonly>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <div class="column is-1">
+                                            <div class="control">
+                                                    <a href="#" id="call-btn" class="button is-info"><i class="fas fa-plus-square" style='font-size:25px'></i></a>
+                                                </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            <hr>
+                            <table class="table is-fullwidth is-hoverable" id="mytable"> 
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Servicio</th>
+                                        <th>Horas</th>
+                                        <th>Precio</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                                <tfoot>
+                                        <tr>
+                                                <td colspan="4" align="center">Total</td>
+                                                <td id="total">Q.00</td>
+                                            </tr>
+                                </tfoot>
+                            </table><br>
+                            <textarea class="textarea" name="description" rows="2" placeholder="Descripción"></textarea>
+                            <hr>
+                            <button class="button is-fullwidth is-info is-outlined">Guardar</button>
+                        </form>
+                            </div>
+                    </div>
+                    </div>
+            </div>
         </div>
     </div>
-<div class="column is-four-fifths">
-        <div class="container"><br><br>
-                <div class="box">
-                    <div class="title is-2"> Agendar Servicio
-                        <div class="field is-grouped is-grouped-right">
-                        <div class="control">
-                            <a href="{{ route('receipt.create') }}" class="button is-success is-gruped-right">Agendar Servicio</a>
-                        </div>
-                    </div>
-                </div>
-                <form action="{{ Route('receipt.store') }}" method="POST" >
-                    @csrf
-                <div class="box" style="background-color:#f0f2ef;">
-                    <div class="columns">
-                        <div class="column">
-                            <div class="control">
-                                <input type="hidden" id="idcustom" value="{{ old('customer_id') }}" name="customer_id">
-                                <input type="text" id='fullname' class="input" value="{{ old('fullname') }}" placeholder="Cliente" required>
-                                @error('customer_id')
-                                <div class="help is-danger">{{ $message }}</div>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="column">
-                            <div class="control">
-                                <input type="tel" id="number_phone" class="input" value="{{ old('number_phone') }}" placeholder="Télefono" required>
-                                @error('number_phone')
-                                <div class="help is-danger">{{ $message }}</div>
-                                @enderror
-                        </div>
-                        </div>
-                        <div class="column">
-                            <div class="control">
-                                <input type="text" name="address" id="address" class="input" value="{{ old('address') }}" placeholder="Dirección" required>
-                                @error('address')
-                                <div class="help is-danger">{{ $message }}</div>
-                                @enderror
-                            </div>
-                        </div>
-                </div>
-                </div>
-                <div class="box">
-                    <div class="columns">
-                        <div class="column">
-                            <div class="control">
-                                <input type="date" name="date_service" class="input"  placeholder="Fecha del servicio" id="dat" min="{{ $day= date('Y-m-d') }}" value="{{ $now=date('Y-m-d') }}" required>
-                                @error('date_service')
-                                <div class="help is-danger">{{ $message }}</div>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="column">
-                                <div class="control">
-                                   <input type="time" name="service_end" class="input" required>
-                                    @error('service_end')
-                                    <div class="help is-danger">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                            </div>
-                        <div class="column">
-                            <div class="control">
-                                    <select class="input" name="schedule_id">
-                                        <option value="0" disabled selected>----------</option>
-                                @foreach ($sc as $sch)
-                             <option value="{{ $sch->id }}  {{ old('schedule') == "$sch->id " ? 'selected' : '' }}">{{ $sch->hour }}</option>
-                                @endforeach
-                                @error('schedule_id')
-                                <div class="help is-danger">{{ $message }}</div>
-                                @enderror
-                            </select>     
-                            </div>
-                            </div>
-                        <div class="column">
-                            <div class="control">
-                                <input type="hidden" name="employee_id" value="{{ old('employee_id') }}" id="empId">
-                                <input type="text" class="input" id="full" value="{{ old('fu') }}" name="fu" placeholder="Empleado" required>
-                                @error('employee_id')
-                                <div class="help is-danger">{{ $message }}</div>
-                                @enderror
-                            </div>
-                        </div>
-                    </div>
-                    </div><hr>
-                <div class="box" style="background-color:#f0f2ef;">
-                    <div class="columns">
-                        <div class="column is-7">
-                            <div class="control">
-                                <input type="hidden" id="idService">
-                                <input type="text"  class="input" id="name" placeholder="Servicio">
-                                @error('idService')
-                                <div class="help is-danger">{{ $message }}</div>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="column is-2">
-                            <div class="control">
-                                <input type="text" class="input" id="time" placeholder="horas">
-                                @error('time')
-                                <div class="help is-danger">{{ $message }}</div>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="column is-2">
-                            <div class="field has-addons">
-                                <div class="control">
-                                    <div class="control">
-                                        <a class="button is-static">Q.</a>
-                                    </div>
-                                </div>
-                            <div class="control">
-                                <input type="text"  class="input" id="price" value="0" readonly>
-                            </div>
-                        </div>
-                        </div>
-                        <div class="column is-1">
-                                <div class="control">
-                                        <a href="#" id="call-btn" class="button is-info"><i class="fas fa-plus-square" style='font-size:25px'></i></a>
-                                    </div>
-                        </div>
-                        </div>
-                    </div>
-                <hr>
-                <table class="table is-fullwidth is-hoverable" id="mytable"> 
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>Servicio</th>
-                            <th>Horas</th>
-                            <th>Precio</th>
-                            <th>Total</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                    <tfoot>
-                            <tr>
-                                    <td colspan="4" align="center">Total</td>
-                                    <td id="total">Q.00</td>
-                                </tr>
-                    </tfoot>
-                </table><br>
-                <textarea class="textarea" name="description" rows="2" placeholder="Descripción"></textarea>
-                <hr>
-                <button class="button is-fullwidth is-info is-outlined">Guardar</button>
-            </form>
-                </div>
-        </div>
-        </div>
-</div>
 </div>
 <script>
 
