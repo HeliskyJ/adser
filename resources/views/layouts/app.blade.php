@@ -20,7 +20,7 @@
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}"></script>
 </head>
-<body id="bodyNav">
+<body id="bodyNav" class="has-background-grey-darker">
     <div id="app">
         @if(Auth::check())
         <header class="hero" >

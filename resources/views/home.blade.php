@@ -67,7 +67,7 @@
                     </div>
                 </div>
             <div class="column">
-                    <div class="box notification" id="backBox">
+                    <div class="box notification has-background-info" id="backBox">
                             @if ($cancel == 1)
                             <span class="heading has-text-centered"> Servicio Cancelado</span>
                             @else
