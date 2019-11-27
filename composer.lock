@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a5ee8109ab1cb1b03771f4ea61b9111a",
+    "content-hash": "bc216761ca1b4168730662e44f177943",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -379,6 +379,49 @@
                 "trusted proxy"
             ],
             "time": "2019-09-03T16:45:42+00:00"
+        },
+        {
+            "name": "gussrw/laravel-routes",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/GussRw/Documentation-Laravel-Routes.git",
+                "reference": "70e2f4a6dfb9971cf3f9883c3230c12a22ed0dad"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/GussRw/Documentation-Laravel-Routes/zipball/70e2f4a6dfb9971cf3f9883c3230c12a22ed0dad",
+                "reference": "70e2f4a6dfb9971cf3f9883c3230c12a22ed0dad",
+                "shasum": ""
+            },
+            "type": "laravel-plugin",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "GussRw\\LaravelRoutes\\LaravelRoutesServiceProvider"
+                    ],
+                    "aliases": {
+                        "Routes": "GussRw\\LaravelRoutes\\Facade\\Routes"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GussRw\\LaravelRoutes\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "GussRw",
+                    "email": "gussrw1@gmail.com"
+                }
+            ],
+            "description": "Documentation of Laravel Routes",
+            "time": "2018-04-26T23:11:15+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",
