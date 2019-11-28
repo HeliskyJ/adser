@@ -36,7 +36,7 @@
                     </p>
                     <ul class="menu-list">
                       <li><a class="has-text-light">Cuenta</a></li>
-                      <li><a class="has-text-light">Transfers</a></li>
+                      <li><a class="has-text-light">Transferencias</a></li>
                       <li><a class="has-text-light">Balance</a></li>
                     </ul>
                   </nav>

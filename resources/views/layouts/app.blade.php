@@ -40,7 +40,7 @@
                   </a>
                     <a href="" class="navbar-item is-tab is-hidden-mobile is-active">
                         <font style="vertical-align:inherit;">
-                        <font style="vertical-align:inherit;">about</font>
+                        <font style="vertical-align:inherit;">¿Quiénes Somos?</font>
                       </font>
                       </a>
                       <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
