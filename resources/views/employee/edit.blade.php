@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
+@section('content')
 <div class="column is-four-fifths">
-@section('content')<div class="hero is-fullheight letter">
+<div class="hero is-fullheight letter">
         <div class="hero-head">
                     <div class="container"><br><br>
                             <div class="box">
